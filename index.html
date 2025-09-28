@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Компания - Главная</title>
+    <title>ТОЧМЕДПРИЛАД</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/logo.jpg">
     <style>
         /* Нормализация стилей */
         * {
@@ -34,9 +35,9 @@
         }
         
         :root {
-            --primary: #3498db;
-            --primary-dark: #2980b9;
-            --secondary: #2c3e50;
+            --primary: #46b929;
+            --primary-dark: #34db50;
+            --secondary: #2c5031;
             --accent: #e74c3c;
             --light: #ecf0f1;
             --dark: #2c3e50;
@@ -126,6 +127,13 @@
         .logo i {
             font-size: 28px;
         }
+
+        .logo img,
+        footer img
+        {
+            height: 32px;
+            width: 32px;
+        }
         
         nav ul {
             display: flex;
@@ -138,7 +146,7 @@
             position: relative;
         }
         
-        nav ul li a {
+        .header-content nav ul li a {
             text-decoration: none;
             color: var(--dark);
             font-weight: 600;
@@ -147,11 +155,11 @@
             font-size: 16px;
         }
         
-        nav ul li a:hover {
+        .header-content nav ul li a:hover {
             color: var(--primary);
         }
         
-        nav ul li a::after {
+        .header-content nav ul li a::after {
             content: '';
             position: absolute;
             width: 0;
@@ -162,7 +170,7 @@
             transition: width 0.3s;
         }
         
-        nav ul li a:hover::after {
+        .header-content nav ul li a:hover::after {
             width: 100%;
         }
         
@@ -1178,6 +1186,34 @@
             font-size: 0.85rem;
         }
 
+        /* Дополнительные стили для новых разделов */
+        .product-purpose, .product-application {
+            margin-bottom: 10px;
+        }
+
+        .product-purpose p, .product-application p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .modal-purpose-product, .modal-application-product {
+            margin-bottom: 20px;
+        }
+
+        .modal-purpose-product h3, .modal-application-product h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .modal-purpose-product p, .modal-application-product p {
+            margin: 0;
+            line-height: 1.5;
+            color: #555;
+        }
+
         /* Стили для скрытия элементов языка */
         .hidden-lang {
             display: none !important;
@@ -1228,10 +1264,6 @@
                 flex-grow: 1;
             }
             
-            .logo-text {
-                display: none;
-            }
-            
             .cart-icon {
                 order: 2;
                 margin-left: 12px;
@@ -1243,28 +1275,28 @@
                 margin-left: 12px;
             }
             
-            nav {
+            .header-content nav {
                 width: 100%;
                 margin-top: 12px;
                 display: none;
                 order: 4;
             }
             
-            nav.active {
+            .header-content nav.active {
                 display: block;
             }
             
-            nav ul {
+            .header-content nav ul {
                 flex-direction: column;
                 align-items: flex-start;
             }
             
-            nav ul li {
+            .header-content nav ul li {
                 margin: 8px 0;
                 width: 100%;
             }
             
-            nav ul li a {
+            .header-content nav ul li a {
                 display: block;
                 width: 100%;
                 padding: 8px 0;
@@ -1381,9 +1413,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-cube"></i>
-                    <span class="logo-text" data-lang="ru">TECHCOMPANY</span>
-                    <span data-lang="ua" class="hidden-lang">TECHКОМПАНІЯ</span>
+                    <img src="/logo.jpg" alt="logo">
+                    <span class="logo-text">TOЧМЕДПРИЛАД</span>
                 </div>
                 <button class="menu-toggle" id="menuToggle">
                     <i class="fas fa-bars"></i>
@@ -1404,7 +1435,7 @@
                         <li><a href="#home" data-lang="ru">Главная</a><a href="#home" data-lang="ua" class="hidden-lang">Головна</a></li>
                         <li><a href="#catalog" data-lang="ru">Каталог</a><a href="#catalog" data-lang="ua" class="hidden-lang">Каталог</a></li>
                         <li><a href="#services" data-lang="ru">Сервис</a><a href="#services" data-lang="ua" class="hidden-lang">Сервіс</a></li>
-                        <li><a href="#partners" data-lang="ru">Партнеры</a><a href="#partners" data-lang="ua" class="hidden-lang">Партнери</a></li>
+                        <li><a href="#partners" data-lang="ru">История</a><a href="#partners" data-lang="ua" class="hidden-lang">Історія</a></li>
                         <li><a href="#contacts" data-lang="ru">Контакты</a><a href="#contacts" data-lang="ua" class="hidden-lang">Контакти</a></li>
                     </ul>
                 </nav>
@@ -1417,29 +1448,30 @@
         <div class="container">
             <!-- Главная страница -->
             <section id="home" class="animated fadeIn">
-                <h1 data-lang="ru">Инновационные решения для вашего бизнеса</h1>
-                <h1 data-lang="ua" class="hidden-lang">Інноваційні рішення для вашого бізнесу</h1>
+                <h1 data-lang="ru">90 лет на страже вашего здоровья</h1>
+                <h1 data-lang="ua" class="hidden-lang">90 років на варті вашого здоров’я</h1>
                 <br>
-                <p data-lang="ru">Мы - современная технологическая компания, специализирующаяся на предоставлении качественных услуг и продукции. Наша миссия - удовлетворение потребностей клиентов через инновационные решения и превосходное обслуживание.</p>
-                <p data-lang="ua" class="hidden-lang">Ми - сучасна технологічна компанія, що спеціалізується на наданні якісних послуг та продукції. Наша місія - задоволення потреб клієнтів через інноваційні рішення та відмінне обслуговування.</p>
-                <p data-lang="ru">С момента основания мы стремимся к постоянному развитию и улучшению наших продуктов. Наша команда профессионалов готова предложить вам лучшие решения на рынке.</p>
-                <p data-lang="ua" class="hidden-lang">З моменту заснування ми прагнемо до постійного розвитку та вдосконалення наших продуктів. Наша команда професіоналів готова запропонувати вам найкращі рішення на ринку.</p>
+                <br>
+                <p data-lang="ru">Более 90 лет наша компания является надёжным партнёром в мире медицины. Мы специализируемся на разработке и поставке высококачественного медицинского оборудования, которое помогает спасать жизни и улучшать их качество.</p>
+                <p data-lang="ua" class="hidden-lang">Понад 90 років наша компанія є надійним партнером у світі медицини. Ми спеціалізуємося на розробці та постачанні високоякісного медичного обладнання, що допомагає рятувати життя та покращувати їх якість.</p>
+                <p data-lang="ru">Наш опыт, глубокие знания рынка и стремление к инновациям позволяют нам предлагать лучшие решения для здравоохранения. Мы гордимся тем, что наши продукты — это воплощение долговечности, точности и доверия.</p\>
+                <p data-lang="ua" class="hidden-lang">Наш досвід, глибокі знання ринку та прагнення до інновацій дозволяють нам пропонувати найкращі рішення для охорони здоров'я. Ми пишаємося тим, що наші продукти — це втілення довговічності, точності та довіри.</p>     
             </section>
-
             <!-- Каталог -->
             <section id="catalog" class="animated fadeIn">
                 <h2 data-lang="ru">Каталог продукции</h2>
                 <h2 data-lang="ua" class="hidden-lang">Каталог продукції</h2>
                 <br>
                 <br>
-                <p data-lang="ru">Ознакомьтесь с нашим широким ассортиментом продукции. Мы постоянно обновляем каталог, добавляя новые позиции.</p>
-                <p data-lang="ua" class="hidden-lang">Ознайомтесь з нашим широким асортиментом продукції. Ми постійно оновлюємо каталог, додаючи нові позиції.</p>
+                <p data-lang="ru">Ознакомьтесь с нашим широким ассортиментом продукции.</p>
+                <p data-lang="ua" class="hidden-lang">Ознайомтесь з нашим широким асортиментом продукції.</p>
                 
                 <!-- Поиск и фильтры -->
                 <div class="catalog-controls">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" id="searchInput" placeholder="Поиск товаров...">
+                        <input type="text" id="searchInput" placeholder="Поиск товаров..." data-lang="ru">
+                        <input type="text" id="searchInput" placeholder="Пошук товарів..." data-lang="ua" class="hidden-lang">
                     </div>
                     <div class="category-filter" id="categoryFilter">
                         <!-- Категории будут добавлены через JavaScript -->
@@ -1461,87 +1493,130 @@
 
             <!-- Сервис -->
             <section id="services" class="animated fadeIn">
-                <h2>Наши услуги</h2>
-                <p>Мы предлагаем комплекс услуг, направленных на удовлетворение всех потребностей наших клиентов.</p>
+                <h2 data-lang="ru">Наши услуги</h2>
+                <h2 data-lang="ua" class="hidden-lang">Наші послуги</h2>
+                <br>
+                <br>
+                <p data-lang="ru">Мы предлагаем комплекс услуг, направленных на удовлетворение всех потребностей наших клиентов.</p>
+                <p data-lang="ua" class="hidden-lang">Ми пропонуємо комплекс послуг, спрямованих на задоволення всіх потреб наших клієнтів.</p>
                 <div class="services-list">
                     <div class="service-item">
                         <i class="fas fa-headset"></i>
-                        <h3>Консультация</h3>
-                        <p>Профессиональные консультации по выбору продукции и решению ваших задач. Наши эксперты помогут подобрать оптимальное решение.</p>
+                        <br>
+                        <h3 data-lang="ru">Консультация</h3>
+                        <h3 data-lang="ua" class="hidden-lang">Консультація</h3>
+                        <br>
+                        <br>
+                        <p data-lang="ru">Профессиональные консультации по выбору продукции и решению ваших задач. Мы поможем подобрать оптимальное решение.</p>
+                        <p data-lang="ua" class="hidden-lang">Професійні консультації щодо вибору продукції та вирішення ваших завдань. Ми допоможимо підібрати оптимальне рішення.</p>
                     </div>
                     <div class="service-item">
                         <i class="fas fa-shipping-fast"></i>
-                        <h3>Доставка</h3>
-                        <p>Быстрая и надежная доставка по всей стране в кратчайшие сроки. Гарантия сохранности и своевременной поставки.</p>
+                        <br>
+                        <h3 data-lang="ru">Доставка</h3>
+                        <h3 data-lang="ua" class="hidden-lang">Доставка</h3>
+                        <br>
+                        <br>
+                        <p data-lang="ru">Максимально быстрая доставка по всей Украине и за ее пределами в кратчайшие сроки.</p>
+                        <p data-lang="ua" class="hidden-lang">Максимально швидка доставка по всій Україні та за її межі в найкоротші терміни.</p>
                     </div>
                     <div class="service-item">
                         <i class="fas fa-tools"></i>
-                        <h3>Техподдержка</h3>
-                        <p>Круглосуточная техническая поддержка для решения любых вопросов. Мы всегда на связи, чтобы помочь вам.</p>
+                        <br>
+                        <h3 data-lang="ru">Тех обслуживание</h3>
+                        <h3 data-lang="ua" class="hidden-lang">Тех обслуговування</h3>
+                        <br>
+                        <br>
+                        <p data-lang="ru">Квалифицированное сервисное обслуживание и ремонт медицинского оборудования. Наши специалисты обеспечат бесперебойную работу вашей техники на протяжении всего срока службы.</p>
+                        <p data-lang="ua" class="hidden-lang">Кваліфіковане сервісне обслуговування та ремонт медичного обладнання. Наші фахівці забезпечать безперебійну роботу вашої техніки протягом усього терміну служби.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Партнеры -->
-            <section id="partners" class="animated fadeIn">
-                <h2>Наши партнеры</h2>
-                <p>Мы сотрудничаем с ведущими компаниями в отрасли, чтобы предлагать вам только лучшее.</p>
-                <div class="partners-grid">
-                    <div class="partner-item">
-                        <span>TechPartners</span>
-                    </div>
-                    <div class="partner-item">
-                        <span>InnovateCorp</span>
-                    </div>
-                    <div class="partner-item">
-                        <span>GlobalSolutions</span>
-                    </div>
-                    <div class="partner-item">
-                        <span>FutureTech</span>
-                    </div>
-                    <div class="partner-item">
-                        <span>SmartSystems</span>
-                    </div>
-                    <div class="partner-item">
-                        <span>NextGen</span>
-                    </div>
-                </div>
+            <section id="history" class="animated fadeIn">
+                <h2 data-lang="ru">Наша история</h2>
+                <h2 data-lang="ua" class="hidden-lang">Наша історія</h2>
+                <br>
+                <br>
+                <p data-lang="ru">Наша история — это более 90 лет развития, инноваций и преданности делу. С 1930-х годов мы стоим у истоков медицинской индустрии, постоянно совершенствуя наши технологии и расширяя спектр услуг.</p>
+                <p data-lang="ua" class="hidden-lang">Наша історія — це понад 90 років розвитку, інновацій та відданості справі. З 1930-х років ми стоїмо біля витоків медичної індустрії, постійно вдосконалюючи наші технології та розширюючи спектр послуг.</p>
             </section>
 
             <!-- Контакты -->
             <section id="contacts" class="animated fadeIn">
-                <h2>Контакты</h2>
+                <h2 data-lang="ru">Контакты</h2>
+                <h2 data-lang="ua" class="hidden-lang">Контакти</h2>
                 <div class="contact-info">
                     <div class="contact-details">
-                        <h3>Наши контакты</h3>
+                        <h3 data-lang="ru">Наши контакты</h2>
+                        <h3 data-lang="ua" class="hidden-lang">Наші контакти</h2>
+                        <br>
+                        <br>
                         <p>
-                            <span class="contact-label"><i class="fas fa-map-marker-alt"></i> Адрес:</span>
-                            <span class="contact-value">г. Харьков, ул. Примерная, д. 123</span>
+                            <span class="contact-label"><i class="fas fa-map-marker-alt"></i> 
+                                <span data-lang="ru">Адрес:</span>
+                                <span data-lang="ua" class="hidden-lang">Адреса:</span>
+                            </span>
+                            <span class="contact-value">
+                                <span data-lang="ru">г. Харьков, ул. Академика Проскуры, дом 1, корпус 45</span>
+                                <span data-lang="ua" class="hidden-lang">м. Харків, вул. Академіка Проскури, буд. 1, корпус 45</span>
+                            </span>
                         </p>
                         <p>
-                            <span class="contact-label"><i class="fas fa-phone"></i> Телефон:</span>
-                            <span class="contact-value">+38 (095) 123-45-67</span>
+                            <span class="contact-label"><i class="fas fa-phone"></i> 
+                                <span data-lang="ru">Телефон:</span>
+                                <span data-lang="ua" class="hidden-lang">Телефон:</span>
+                            </span>
+                            <span class="contact-value">+38 (057) 341-76-15</span>
                         </p>
                         <p>
-                            <span class="contact-label"><i class="fas fa-envelope"></i> Email:</span>
-                            <span class="contact-value">info@techcompany.ua</span>
+                            <span class="contact-label"><i class="fas fa-envelope"></i> 
+                                <span data-lang="ru">Email:</span>
+                                <span data-lang="ua" class="hidden-lang">Email:</span>
+                            </span>
+                            <span class="contact-value">Tochmedprilad@gmail.com</span>
                         </p>
                         <p>
-                            <span class="contact-label"><i class="fas fa-clock"></i> Режим работы:</span>
-                            <span class="contact-value">Пн-Пт: 9:00-18:00</span>
+                            <span class="contact-label"><i class="fas fa-user-tie"></i> 
+                                <span data-lang="ru">Генеральный директор:</span>
+                                <span data-lang="ua" class="hidden-lang">Генеральний директор:</span>
+                            </span>
+                            <span class="contact-value">
+                                <span data-lang="ru">Шевченко Анна Олексеевна</span>
+                                <span data-lang="ua" class="hidden-lang">Шевченко Ганна Олексіївна</span>
+                            </span>
                         </p>
                         <p>
-                            <span class="contact-label"><i class="fas fa-subway"></i> Метро:</span>
-                            <span class="contact-value">Станция "Технологическая"</span>
+                            <span class="contact-label"><i class="fas fa-calculator"></i> 
+                                <span data-lang="ru">Главный бухгалтер:</span>
+                                <span data-lang="ua" class="hidden-lang">Головний бухгалтер:</span>
+                            </span>
+                            <span class="contact-value">
+                                <span data-lang="ru">Григорова Ирина Николаевна</span>
+                                <span data-lang="ua" class="hidden-lang">Григорова Ірина Миколаївна</span>
+                            </span>
                         </p>
                     </div>
                     <div class="contact-form">
-                        <h3>Напишите нам</h3>
+                        <h3 data-lang="ru">Напишите нам</h3>
+                        <h3 data-lang="ua" class="hidden-lang">Напишіть нам</h3>
+                        <br>
+                        <br>
                         <form id="contactForm">
-                            <input type="text" placeholder="Ваше имя" required>
-                            <input type="email" placeholder="Ваш email" required>
-                            <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
-                            <button type="submit">Отправить сообщение</button>
+                            <input type="text" data-lang="ru" placeholder="Ваше имя" required>
+                            <input type="text" data-lang="ua" class="hidden-lang" placeholder="Ваше ім'я" required>
+                        
+                            <input type="email" data-lang="ru" placeholder="Ваш email" required>
+                            <input type="email" data-lang="ua" class="hidden-lang" placeholder="Ваш email" required>
+                        
+                            <textarea data-lang="ru" placeholder="Ваше сообщение" rows="5" required></textarea>
+                            <textarea data-lang="ua" class="hidden-lang" placeholder="Ваше повідомлення" rows="5" required></textarea>
+                        
+                            <button type="submit">
+                                <span data-lang="ru">Отправить сообщение</span>
+                                <span data-lang="ua" class="hidden-lang">Надіслати повідомлення</span>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -1558,13 +1633,27 @@
     <div class="modal" id="contactModal">
         <div class="modal-content">
             <button class="close-modal" id="closeModal">&times;</button>
-            <h2>Свяжитесь с нами</h2>
+            <h2>
+                <span data-lang="ru">Свяжитесь с нами</span>
+                <span data-lang="ua" class="hidden-lang">Зв'яжіться з нами</span>
+            </h2>
             <form class="modal-form" id="modalForm">
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="tel" placeholder="Ваш телефон" required>
-                <input type="email" placeholder="Ваш email" required>
-                <textarea placeholder="Ваше сообщение" rows="4" required></textarea>
-                <button type="submit">Отправить заявку</button>
+                <input type="text" data-lang="ru" placeholder="Ваше имя" required>
+                <input type="text" data-lang="ua" class="hidden-lang" placeholder="Ваше ім'я" required>
+                
+                <input type="tel" data-lang="ru" placeholder="Ваш телефон" required>
+                <input type="tel" data-lang="ua" class="hidden-lang" placeholder="Ваш телефон" required>
+                
+                <input type="email" data-lang="ru" placeholder="Ваш email" required>
+                <input type="email" data-lang="ua" class="hidden-lang" placeholder="Ваш email" required>
+                
+                <textarea data-lang="ru" placeholder="Ваше сообщение" rows="4" required></textarea>
+                <textarea data-lang="ua" class="hidden-lang" placeholder="Ваше повідомлення" rows="4" required></textarea>
+                
+                <button type="submit">
+                    <span data-lang="ru">Отправить заявку</span>
+                    <span data-lang="ua" class="hidden-lang">Відправити заявку</span>
+                </button>
             </form>
         </div>
     </div>
@@ -1581,19 +1670,22 @@
             <div class="modal-details-section">
                 <div class="modal-header-product">
                     <h2 id="modalProductName">Название товара</h2>
-                    <div class="product-rating">
-                        <div class="rating-stars" id="modalProductRating">
-                            <!-- Звезды рейтинга -->
-                        </div>
-                        <span class="rating-value" id="modalRatingValue">4.8</span>
-                    </div>
+                    <br>
                     <span class="product-status" id="modalProductStatus">В наличии</span>
                 </div>
                 
                 <div class="modal-price-product" id="modalProductPrice">0 грн</div>
                 
-                <div class="modal-description-product" id="modalProductDescription">
-                    Описание товара будет здесь
+                <div class="modal-purpose-product" id="modalProductPurpose">
+                    <h3 data-lang="ru">Назначение:</h3>
+                    <h3 data-lang="ua" class="hidden-lang">Призначення:</h3>
+                    <p id="modalPurposeText">Назначение товара будет здесь</p>
+                </div>
+                
+                <div class="modal-application-product" id="modalProductApplication">
+                    <h3 data-lang="ru">Применение:</h3>
+                    <h3 data-lang="ua" class="hidden-lang">Застосування:</h3>
+                    <p id="modalApplicationText">Применение товара будет здесь</p>
                 </div>
                 
                 <div class="modal-features-product">
@@ -1631,467 +1723,1101 @@
             </div>
         </div>
     </div>
-
-    <!-- Модальное окно корзины -->
+    <!-- ДОБАВЛЯЕМ МОДАЛЬНОЕ ОКНО КОРЗИНЫ -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
             <div class="cart-header">
-                <h2>Корзина покупок</h2>
+                <h2 data-lang="ru">Корзина</h2>
+                <h2 data-lang="ua" class="hidden-lang">Кошик</h2>
                 <button class="close-modal" id="closeCartModal">&times;</button>
             </div>
             <div class="cart-body">
                 <div class="cart-items" id="cartItems">
-                    <!-- Товары в корзине будут добавлены через JS -->
+                    <!-- Товары будут добавляться сюда -->
                 </div>
                 <div class="cart-total" id="cartTotal">
-                    Итого: 0 грн
+                    <span data-lang="ru">Итого:</span>
+                    <span data-lang="ua" class="hidden-lang">Разом:</span>
+                    <span> 0 грн</span>
                 </div>
                 
                 <!-- Форма заказа -->
-                <div class="checkout-form" id="checkoutForm">
-                    <h3>Данные для доставки</h3>
+                <div class="checkout-form">
+                    <h3 data-lang="ru">Данные для заказа</h3>
+                    <h3 data-lang="ua" class="hidden-lang">Дані для замовлення</h3>
+                    
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label" for="firstName">Имя *</label>
+                            <label class="form-label" for="firstName">
+                                <span data-lang="ru">Имя *</span>
+                                <span data-lang="ua" class="hidden-lang">Ім'я *</span>
+                            </label>
                             <input type="text" id="firstName" class="form-input" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="lastName">Фамилия *</label>
+                            <label class="form-label" for="lastName">
+                                <span data-lang="ru">Фамилия *</span>
+                                <span data-lang="ua" class="hidden-lang">Прізвище *</span>
+                            </label>
                             <input type="text" id="lastName" class="form-input" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label" for="phone">Телефон *</label>
-                        <input type="tel" id="phone" class="form-input" placeholder="+38 (XXX) XXX-XX-XX" required>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="phone">
+                                <span data-lang="ru">Телефон *</span>
+                                <span data-lang="ua" class="hidden-lang">Телефон *</span>
+                            </label>
+                            <input type="tel" id="phone" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">
+                                <span data-lang="ru">Email</span>
+                                <span data-lang="ua" class="hidden-lang">Email</span>
+                            </label>
+                            <input type="email" id="email" class="form-input">
+                        </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" class="form-input" placeholder="your@email.com">
+                        <label class="form-label" for="novaPoshta">
+                            <span data-lang="ru">Отделение Новой Почты *</span>
+                            <span data-lang="ua" class="hidden-lang">Відділення Нової Пошти *</span>
+                        </label>
+                        <input type="text" id="novaPoshta" class="form-input" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label class="form-label" for="novaPoshta">Отделение Новой Почты *</label>
-                        <input type="text" id="novaPoshta" class="form-input" placeholder="Номер отделения или адрес" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="comments">Комментарий к заказу</label>
-                        <textarea id="comments" class="form-textarea" placeholder="Дополнительные пожелания..."></textarea>
+                        <label class="form-label" for="comments">
+                            <span data-lang="ru">Комментарий к заказу</span>
+                            <span data-lang="ua" class="hidden-lang">Коментар до замовлення</span>
+                        </label>
+                        <textarea id="comments" class="form-textarea" rows="3"></textarea>
                     </div>
                     
                     <div class="delivery-info">
-                        <p><i class="fas fa-info-circle"></i> Доставка осуществляется через службу "Новая Почта". Срок доставки 1-3 дня.</p>
+                        <i class="fas fa-info-circle"></i>
+                        <span data-lang="ru">Доставка осуществляется через службу "Новая Почта" в течение 1-3 дней</span>
+                        <span data-lang="ua" class="hidden-lang">Доставка здійснюється через службу "Нова Пошта" протягом 1-3 днів</span>
                     </div>
                 </div>
                 
                 <div class="cart-actions">
-                    <button class="btn btn-clear" id="clearCart">Очистить корзину</button>
-                    <button class="btn btn-checkout" id="checkout">Оформить заказ</button>
+                    <button class="btn btn-clear" id="clearCart">
+                        <i class="fas fa-trash"></i>
+                        <span data-lang="ru">Очистить</span>
+                        <span data-lang="ua" class="hidden-lang">Очистити</span>
+                    </button>
+                    <button class="btn btn-checkout" id="checkout">
+                        <i class="fas fa-check"></i>
+                        <span data-lang="ru">Оформить заказ</span>
+                        <span data-lang="ua" class="hidden-lang">Оформити замовлення</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Футер -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <i class="fas fa-cube"></i>
-                    TECHCOMPANY
+                    <img src="/logo.jpg" alt="logo">
+                    <span class="logo-text">TOЧМЕДПРИЛАД</span>
                 </div>
                 <div class="footer-links">
-                    <a href="#home">Главная</a>
-                    <a href="#catalog">Каталог</a>
-                    <a href="#services">Сервис</a>
-                    <a href="#partners">Партнеры</a>
-                    <a href="#contacts">Контакты</a>
+                    <nav>
+                        <ul>
+                            <li><a href="#home" data-lang="ru">Главная</a><a href="#home" data-lang="ua" class="hidden-lang">Головна</a></li>
+                            <li><a href="#catalog" data-lang="ru">Каталог</a><a href="#catalog" data-lang="ua" class="hidden-lang">Каталог</a></li>
+                            <li><a href="#services" data-lang="ru">Сервис</a><a href="#services" data-lang="ua" class="hidden-lang">Сервіс</a></li>
+                            <li><a href="#partners" data-lang="ru">История</a><a href="#partners" data-lang="ua" class="hidden-lang">Історія</a></li>
+                            <li><a href="#contacts" data-lang="ru">Контакты</a><a href="#contacts" data-lang="ua" class="hidden-lang">Контакти</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <p class="copyright">&copy; 2023 TechCompany. Все права защищены.</p>
+                <p class="copyright">
+                    <span data-lang="ru">&copy; 2025 TOCHMEDPRILAD. Все права защищены.</span>
+                    <span data-lang="ua" class="hidden-lang">&copy; 2025 TOCHMEDPRYLAD. Усі права захищено.</span>
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Данные товаров
-        const products = [
-            {
-                id: 1,
-                name: "Смартфон ProMax",
-                nameUa: "Смартфон ProMax",
-                category: "electronics",
-                price: 29999,
-                image: "https://via.placeholder.com/300x200?text=Смартфон",
-                description: "Мощный смартфон с большим экраном и продвинутой камерой. Идеален для работы и развлечений.",
-                descriptionUa: "Потужний смартфон з великим екраном та передовою камерою. Ідеальний для роботи та розваг.",
-                features: ["6.7-дюймовый OLED-экран", "Тройная камера 48 Мп", "Батарея 5000 мАч", "Процессор Snapdragon 888"],
-                featuresUa: ["6.7-дюймовий OLED-екран", "Потрійна камера 48 Мп", "Акумулятор 5000 мАч", "Процесор Snapdragon 888"],
-                rating: 4.8,
-                inStock: true
-            },
-            {
-                id: 2,
-                name: "Ноутбук UltraBook",
-                category: "electronics",
-                price: 54999,
-                image: "https://via.placeholder.com/300x200?text=Ноутбук",
-                description: "Легкий и мощный ноутбук для работы и творчества. Отличное решение для профессионалов.",
-                features: ["15.6-дюймовый экран", "Процессор Intel i7", "16 ГБ оперативной памяти", "SSD 512 ГБ"],
-                rating: 4.9,
-                inStock: true
-            },
-            {
-                id: 3,
-                name: "Наушники Wireless Pro",
-                category: "electronics",
-                price: 12999,
-                image: "https://via.placeholder.com/300x200?text=Наушники",
-                description: "Беспроводные наушники с шумоподавлением и премиальным звуком.",
-                features: ["Активное шумоподавление", "Автономность 30 часов", "Водостойкость IPX4", "Касательное управление"],
-                rating: 4.7,
-                inStock: true
-            },
-            {
-                id: 4,
-                name: "Офисное кресло",
-                category: "furniture",
-                price: 15999,
-                image: "https://via.placeholder.com/300x200?text=Кресло",
-                description: "Эргономичное офисное кресло с поддержкой спины и регулируемой высотой.",
-                features: ["Эргономичная спинка", "Регулировка высоты", "Подлокотники", "Сетчатая ткань"],
-                rating: 4.5,
-                inStock: true
-            },
-            {
-                id: 5,
-                name: "Рабочий стол Modern",
-                category: "furniture",
-                price: 22999,
-                image: "https://via.placeholder.com/300x200?text=Стол",
-                description: "Современный рабочий стол с вместительными ящиками и прочной столешницей.",
-                features: ["Столешница из МДФ", "3 выдвижных ящика", "Металлический каркас", "Размеры 140x70 см"],
-                rating: 4.6,
-                inStock: false
-            },
-            {
-                id: 6,
-                name: "Канцелярский набор",
-                category: "office",
-                price: 2999,
-                image: "https://via.placeholder.com/300x200?text=Канцелярия",
-                description: "Полный набор канцелярских принадлежностей для офиса или дома.",
-                features: ["Ручки, карандаши, маркеры", "Блокноты и стикеры", "Папки и органайзеры", "Скрепки и кнопки"],
-                rating: 4.3,
-                inStock: true
-            },
-            {
-                id: 7,
-                name: "Планшет Pro",
-                category: "electronics",
-                price: 24999,
-                image: "https://via.placeholder.com/300x200?text=Планшет",
-                description: "Мощный планшет для работы и творчества с большим экраном.",
-                features: ["10.9-дюймовый экран", "Процессор A14 Bionic", "128 ГБ памяти", "Поддержка Apple Pencil"],
-                rating: 4.7,
-                inStock: true
-            },
-            {
-                id: 8,
-                name: "Игровая мышь",
-                category: "electronics",
-                price: 3999,
-                image: "https://via.placeholder.com/300x200?text=Мышь",
-                description: "Высокоточная игровая мышь с RGB-подсветкой и программируемыми кнопками.",
-                features: ["Сенсор 16000 DPI", "6 программируемых кнопок", "RGB-подсветка", "Эргономичный дизайн"],
-                rating: 4.6,
-                inStock: true
-            },
-            {
-                id: 9,
-                name: "Книжная полка",
-                category: "furniture",
-                price: 8999,
-                image: "https://via.placeholder.com/300x200?text=Полка",
-                description: "Стильная книжная полка из натурального дерева для дома или офиса.",
-                features: ["Натуральное дерево", "5 полок", "Размеры 120x30x180 см", "Легкая сборка"],
-                rating: 4.4,
-                inStock: true
+    // Данные товаров
+    const products = [
+        {
+            id: 1,
+            name: "Офтальмоскоп зеркальный 03-5",
+            nameUa: "Офтальмоскоп дзеркальний 03-5",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Офтальмоскоп",
+            purpose: "Предназначен для исследования глазного дна и для объективного определения рефракции методом скиаскопии (обычной и полосчатой).",
+            purposeUa: "Призначений для дослідження очного дна та для об'єктивного визначення рефракції методом скіаскопії (звичайної та смугастої).",
+            application: "Используется для исследования глазного дна двумя способами офтальмоскопии: в прямом и обратном виде. Позволяет исследовать прозрачные среды глаза (роговицу, влагу передней камеры, хрусталик, стекловидное тело) проходящим светом. Методом бокового освещения можно обнаружить тонкие изменения склеры, роговой оболочки, передней камеры и радужки.",
+            applicationUa: "Використовується для дослідження очного дна двома способами офтальмоскопії: у прямому та зворотному вигляді. Дозволяє досліджувати прозорі середовища ока (роговицю, вологу передньої камери, кришталик, склоподібне тіло) світлом, що проходить. Методом бокового освітлення можна виявити тонкі зміни склери, рогової оболонки, передньої камери та райдужки.",
+            features: [
+                "Фокусное расстояние вогнутого зеркала: 170±10 мм",
+                "Диаметр отверстия в отражающем слое: 3,5±0,5 мм",
+                "Световой диаметр зеркал: не менее 42 мм",
+                "Размеры отверстия диафрагм: круглого - 10±0,5 мм; прямоугольного - 5x40 мм",
+                "Задняя вершинная рефракция линз луп: +13 и +20 дптр",
+                "Габаритные размеры: 160x78x30 мм",
+                "Масса: офтальмоскопа - 0,05 кг; полного комплекта - 0,2 кг"
+            ],
+            featuresUa: [
+                "Фокусна відстань увігнутого дзеркала: 170±10 мм",
+                "Діаметр отвору у відбиваючому шарі: 3,5±0,5 мм",
+                "Світловий діаметр дзеркал: не менше 42 мм",
+                "Габаритні розміри: 160x78x30 мм",
+                "Маса: 0,05 кг (офтальмоскоп); 0,2 кг (повний комплект)"
+            ],
+            inStock: true
+        },
+        {
+            id: 2,
+            name: "Лупа бинокулярная медицинская ЛБМ-02",
+            nameUa: "Лупа бінокулярна медична ЛБМ-02",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Лупа",
+            purpose: "Предназначена для работ, требующих небольшого увеличения с сохранением стереоскопичности.",
+            purposeUa: "Призначена для робіт, що вимагають невеликого збільшення зі збереженням стереоскопічності.",
+            application: "Применяется в клиниках и медицинских учреждениях для удаления инородных тел, выполнения небольших глазных операций, снятия швов, осмотра глаз у детей, а также для подготовки медицинского инструментария.",
+            applicationUa: "Застосовується в клініках та медичних установах для видалення сторонніх тіл, виконання невеликих очних операцій, зняття швів, огляду очей у дітей, а також для підготовки медичного інструментарію.",
+            features: [
+                "Задняя вершинная рефракция линз лупы: +4,5±0,25 дптр",
+                "Размер световой зоны линз: не менее 30x26 мм",
+                "Расстояние между оптическими центрами линз: 40±2 мм",
+                "Габаритные размеры: не более 288x220x101 мм",
+                "Масса: не более 120 г"
+            ],
+            featuresUa: [
+                "Задня вершинна рефракція лінз лупи: +4,5±0,25 дптр",
+                "Розмір світлової зони лінз: не менше 30x26 мм",
+                "Відстань між оптичними центрами лінз: 40±2 мм",
+                "Габаритні розміри: не більше 288x220x101 мм",
+                "Маса: не більше 120 г"
+            ],
+            inStock: true
+        },
+        {
+            id: 3,
+            name: "Лупа бинокулярная козырьковая ЛБК",
+            nameUa: "Лупа бінокулярна дашкова ЛБК",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Лупа",
+            purpose: "Предназначена для работ, требующих небольшого увеличения с сохранением стереоскопичности.",
+            purposeUa: "Призначена для робіт, що вимагають невеликого збільшення зі збереженням стереоскопічності.",
+            application: "Используется для работ, требующих небольшой кратности увеличения. Дезинфекция наружных поверхностей производится раствором перекиси водорода или хлорамина.",
+            applicationUa: "Використовується для робіт, що вимагають невеликої кратності збільшення. Дезінфекція зовнішніх поверхонь проводиться розчином перекису водню або хлораміну.",
+            features: [
+                "Увеличение: 1,9 крат",
+                "Задняя вершинная рефракция: +4,5±0,25 дптр",
+                "Размер световой зоны: 30x26 мм",
+                "Расстояние между оптическими центрами линз: 40±2 мм",
+                "Масса: 0,2 кг",
+                "Габаритные размеры: 260x162x65 мм",
+                "Средний срок службы: не менее 5 лет"
+            ],
+            featuresUa: [
+                "Збільшення: 1,9 крат",
+                "Задня вершинна рефракція: +4,5±0,25 дптр",
+                "Розмір світлової зони: 30x26 мм",
+                "Відстань між оптичними центрами лінз: 40±2 мм",
+                "Маса: 0,2 кг",
+                "Габаритні розміри: 260x162x65 мм",
+                "Середній термін служби: не менше 5 років"
+            ],
+            inStock: true
+        },
+        {
+            id: 4,
+            name: "Синоптофор СИНФ-1",
+            nameUa: "Синоптофор СІНФ-1",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Синоптофор",
+            purpose: "Предназначен для диагностики и лечения косоглазия.",
+            purposeUa: "Призначений для діагностики та лікування косоокості.",
+            application: "Используется для определения углов косоглазия, состояния корреспонденции сетчаток, бинокулярного слияния и фузионных резервов. Также применяется для лечебных упражнений: устранения функциональной скотомы, развития бинокулярного зрения и фузионной способности.",
+            applicationUa: "Використовується для визначення кутів косоокості, стану кореспонденції сітківок, бінокулярного злиття та фузійних резервів. Також застосовується для лікувальних вправ: усунення функціональної скотоми, розвитку бінокулярного зору та фузійної здатності.",
+            features: [
+                "Диапазон горизонтальных углов: 0±45 град",
+                "Диапазон вертикальных углов: 0±10 град",
+                "Угол поворота каждой оптической головки: схождение до 45 град, расхождение до 25 град",
+                "Увеличение оптической системы: 2 крат",
+                "Расстояние между осями окуляров: 50-70 мм",
+                "Частота миганий и колебаний: 2-8 Гц",
+                "Питание: 220±22 В",
+                "Потребляемая мощность: не более 30 ВА",
+                "Габаритные размеры: 445x297x1377 мм",
+                "Масса: 15 кг (синоптофор); 18 кг (полный комплект)"
+            ],
+            featuresUa: [
+                "Діапазон горизонтальних кутів: 0±45 град",
+                "Діапазон вертикальних кутів: 0±10 град",
+                "Кут повороту кожної оптичної головки: сходження до 45 град, розходження до 25 град",
+                "Збільшення оптичної системи: 2 крат",
+                "Відстань між осями окулярів: 50-70 мм",
+                "Частота миготінь та коливань: 2-8 Гц",
+                "Живлення: 220±22 В",
+                "Споживана потужність: не більше 30 ВА",
+                "Габаритні розміри: 445x297x1377 мм",
+                "Маса: 15 кг (синоптофор); 18 кг (повний комплект)"
+            ],
+            inStock: true
+        },
+        {
+            id: 6,
+            name: "Цветотест ЦТ-1",
+            nameUa: "Кольоротест ЦТ-1",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Цветотест",
+            purpose: "Предназначен для определения характера и степени расстройств бинокулярного зрения.",
+            purposeUa: "Призначений для визначення характеру та ступеня розладів бінокулярного зору.",
+            application: "Используется для исследования характера зрения (бинокулярное, одновременное, монокулярное), определения ведущего глаза и величины угла косоглазия при нормальной корреспонденции сетчаток, а также для установления характера аномальной корреспонденции.",
+            applicationUa: "Використовується для дослідження характеру зору (бінокулярний, одночасний, монокулярний), визначення провідного ока та величини кута косоокості при нормальній кореспонденції сітківок, а також для встановлення характеру аномальної кореспонденції.",
+            features: [
+                "Расположение тест-объектов: Т-образное, повернутое на 90°",
+                "Питание: 220±22 В",
+                "Потребляемая мощность: не более 40 ВА",
+                "Габаритные размеры: 220x155xØ198 мм",
+                "Масса: не более 1,8 кг"
+            ],
+            featuresUa: [
+                "Розташування тест-об'єктів: Т-подібне, повернуте на 90°",
+                "Живлення: 220±22 В",
+                "Споживана потужність: не більше 40 ВА",
+                "Габаритні розміри: 220x155xØ198 мм",
+                "Маса: не більше 1,8 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 7,
+            name: "Линейки скиаскопические ЛСК-1",
+            nameUa: "Лінійки скіаскопічні ЛСК-1",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Скіаскопічні лінійки",
+            purpose: "Предназначен для объективного определения рефракции глаза.",
+            purposeUa: "Призначений для об'єктивного визначення рефракції ока.",
+            application: "Применяются для быстрого и точного измерения рефракции глаза, состоящие из двух линеек с наборами положительных и отрицательных линз.",
+            applicationUa: "Застосовуються для швидкого та точного вимірювання рефракції ока, що складаються з двох лінійок з наборами позитивних та негативних лінз.",
+            features: [
+                "Комплект: две линейки с наборами линз (+1, 2, 3, 4, 5, 6, 7, 8, 9 дптр и -1, 2, 3, 4, 5, 6, 7, 8, 9 дптр)",
+                "Движки с линзами: +0,5, -0,5, +10, -10 дптр",
+                "Пределы воспроизведения рефракции: от -19 до +19 дптр",
+                "Габаритные размеры: 405x36x15 мм",
+                "Масса: не более 0,6 кг"
+            ],
+            featuresUa: [
+                "Комплект: дві лінійки з наборами лінз (+1, 2, 3, 4, 5, 6, 7, 8, 9 дптр та -1, 2, 3, 4, 5, 6, 7, 8, 9 дптр)",
+                "Рухомі елементи з лінзами: +0,5, -0,5, +10, -10 дптр",
+                "Межі відтворення рефракції: від -19 до +19 дптр",
+                "Габаритні розміри: 405x36x15 мм",
+                "Маса: не більше 0,6 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 8,
+            name: "Периметр настольный ПНР-2",
+            nameUa: "Периметр настільний ПНР-2",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Периметр",
+            purpose: "Предназначен для исследования поля зрения.",
+            purposeUa: "Призначений для дослідження поля зору.",
+            application: "Используется для измерения поля зрения, при этом один глаз выключается с помощью наглазника. Комплектуется набором белых и цветных объектов и схемами для фиксации результатов.",
+            applicationUa: "Використовується для вимірювання поля зору, при цьому одне око виключається за допомогою наглазника. Комплектується набором білих та кольорових об'єктів та схемами для фіксації результатів.",
+            features: [
+                "Пределы измерения поля зрения: 0-90 град",
+                "Поворот дуги: не менее 360 град",
+                "Погрешность измерения: ±3 град (по дуге), ±2,5 град (по диску)",
+                "Цена делений шкалы: 1 град (дуга), 5 град (диск), 10 град (линейка)",
+                "Габаритные размеры: 475x680x460 мм",
+                "Масса: 7 кг (периметр); 10 кг (полный комплект)"
+            ],
+            featuresUa: [
+                "Межі вимірювання поля зору: 0-90 град",
+                "Поворот дуги: не менше 360 град",
+                "Похибка вимірювання: ±3 град (по дузі), ±2,5 град (по диску)",
+                "Ціна поділок шкали: 1 град (дуга), 5 град (диск), 10 град (лінійка)",
+                "Габаритні розміри: 475x680x460 мм",
+                "Маса: 7 кг (периметр); 10 кг (повний комплект)"
+            ],
+            inStock: true
+        },
+        {
+            id: 9,
+            name: "Макулотестер поляризационный МТП-2",
+            nameUa: "Макулотестер поляризаційний МТП-2",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Макулотестер",
+            purpose: "Предназначен для исследования функции жёлтого пятна сетчатки в поляризованном свете, определения типа фиксации и лечения амблиопичного глаза при косоглазии.",
+            purposeUa: "Призначений для дослідження функції жовтої плями сітківки в поляризованому світлі, визначення типу фіксації та лікування амбліопічного ока при косоокості.",
+            application: "Используется для диагностики поражений жёлтого пятна, оценки его функционального состояния перед операцией, при глаукоме, а также для лечения амблиопии. Может служить вспомогательным методом для выявления отсутствия центральной фиксации и наличия центральной скотомы.",
+            applicationUa: "Використовується для діагностики уражень жовтої плями, оцінки її функціонального стану перед операцією, при глаукомі, а також для лікування амбліопії. Може слугувати допоміжним методом для виявлення відсутності центральної фіксації та наявності центральної скотоми.",
+            features: [
+                "Увеличение окуляра: 8±0,4 крат",
+                "Диаметр поля зрения: не менее 18 мм",
+                "Максимальная яркость фона: не менее 38 кд/м²",
+                "Питание: 220±22 В",
+                "Потребляемая мощность: не более 65 ВА",
+                "Габаритные размеры: 230x295x305 мм",
+                "Масса: не более 10 кг"
+            ],
+            featuresUa: [
+                "Збільшення окуляра: 8±0,4 крат",
+                "Діаметр поля зору: не менше 18 мм",
+                "Максимальна яскравість фону: не менше 38 кд/м²",
+                "Живлення: 220±22 В",
+                "Споживана потужність: не більше 65 ВА",
+                "Габаритні розміри: 230x295x305 мм",
+                "Маса: не більше 10 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 10,
+            name: "Прибор для исследования остроты зрения для близи ПОЗБ-1",
+            nameUa: "Прилад для дослідження гостроти зору для близу ПОЗБ-1",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Прибор для зрения",
+            purpose: "Предназначен для исследования остроты зрения на близком расстоянии.",
+            purposeUa: "Призначений для дослідження гостроти зору на близькій відстані.",
+            application: "Прибор позволяет исследовать остроту зрения (от 0,1 до 1,0), астигматизм и состояние бинокулярного зрения. Исследование проводится с помощью восьми тестов с различными знаками, а разделение полей зрения осуществляется с помощью очков с красным и сине-зеленым светофильтрами.",
+            applicationUa: "Прилад дозволяє досліджувати гостроту зору (від 0,1 до 1,0), астигматизм і стан бінокулярного зору. Дослідження проводиться за допомогою восьми тестів з різними знаками, а розділення полів зору здійснюється за допомогою окулярів з червоним і синьо-зеленим світлофільтрами.",
+            features: [
+                "Яркость в центре освещенного поля: не менее 90 кд/м²",
+                "Питание: 220±22 В",
+                "Потребляемая мощность: не более 20 ВА",
+                "Габаритные размеры: 205x152x240 мм",
+                "Масса: не более 5,8 кг"
+            ],
+            featuresUa: [
+                "Яскравість у центрі освітленого поля: не менше 90 кд/м²",
+                "Живлення: 220±22 В",
+                "Споживана потужність: не більше 20 ВА",
+                "Габаритні розміри: 205x152x240 мм",
+                "Маса: не більше 5,8 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 11,
+            name: "Прибор для исследования остроты зрения для дали ПОЗД-1",
+            nameUa: "Прилад для дослідження гостроти зору для далечіні ПОЗД-1",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Прибор для зрения",
+            purpose: "Предназначен для исследования остроты зрения для дали.",
+            purposeUa: "Призначений для дослідження гостроти зору для далечіні.",
+            application: "Используется для исследования остроты зрения на расстоянии 5 метров с помощью колец Ландольта. Идеально подходит для массовых осмотров в школах и на предприятиях.",
+            applicationUa: "Використовується для дослідження гостроти зору на відстані 5 метрів за допомогою кілець Ландольта. Ідеально підходить для масових оглядів у школах та на підприємствах.",
+            features: [
+                "Исследование остроты зрения: от 0,1 до 2,0",
+                "Тестовые знаки: кольца Ландольта",
+                "Яркость в центре освещенного поля: не менее 90 кд/м²",
+                "Питание: 220±22 В",
+                "Потребляемая мощность: не более 70 ВА",
+                "Габаритные размеры: 365x382x200 мм",
+                "Масса: не более 5,8 кг"
+            ],
+            featuresUa: [
+                "Дослідження гостроти зору: від 0,1 до 2,0",
+                "Тестові знаки: кільця Ландольта",
+                "Яскравість у центрі освітленого поля: не менше 90 кд/м²",
+                "Живлення: 220±22 В",
+                "Споживана потужність: не більше 70 ВА",
+                "Габаритні розміри: 365x382x200 мм",
+                "Маса: не більше 5,8 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 12,
+            name: "Бивизотренер БТВР-2",
+            nameUa: "Бівизотренер БТВР-2",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Бивизотренер",
+            purpose: "Предназначен для повышения остроты зрения при амблиопии с центральной фиксацией, развития и закрепления одновременного и бинокулярного зрения.",
+            purposeUa: "Призначений для підвищення гостроти зору при амбліопії з центральною фіксацією, розвитку та закріплення одночасного і бінокулярного зору.",
+            application: "Применяется в детских офтальмологических кабинетах для стимулирования совместной работы обоих глаз. Принцип действия основан на зеркальном разделении полей зрения, где каждый глаз воспринимает часть изображения, что способствует развитию бинокулярного зрения.",
+            applicationUa: "Застосовується в дитячих офтальмологічних кабінетах для стимулювання спільної роботи обох очей. Принцип дії заснований на дзеркальному розділенні полів зору, де кожне око сприймає частину зображення, що сприяє розвитку бінокулярного зору.",
+            features: [
+                "Задняя вершинная рефракция окулярных линз: +5 дптр",
+                "Поле зрения: не менее 30 град",
+                "Предел измерения расстояния между осями окуляров: от 48 до 70 мм",
+                "Призматическое действие призм: 3, 4, 6 и 8 ПРДПТР",
+                "Размеры наружных диаметров подвижных объективов: 9, 16, 22, 26 мм",
+                "Габаритные размеры: 310x210x245 мм",
+                "Масса: 2,5 кг (без сменных частей); 3,5 кг (полный комплект)"
+            ],
+            featuresUa: [
+                "Задня вершинна рефракція окулярних лінз: +5 дптр",
+                "Поле зору: не менше 30 град",
+                "Межа вимірювання відстані між осями окулярів: від 48 до 70 мм",
+                "Призматична дія призм: 3, 4, 6 та 8 ПРДПТР",
+                "Розміри зовнішніх діаметрів рухомих об'єктивів: 9, 16, 22, 26 мм",
+                "Габаритні розміри: 310x210x245 мм",
+                "Маса: 2,5 кг (без змінних частин); 3,5 кг (повний комплект)"
+            ],
+            inStock: true
+        },
+        {
+            id: 22,
+            name: "Амблиотренер АТР-1",
+            nameUa: "Амбліотренер АТР-1",
+            category: "Офтальмология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Амблиотренер",
+            purpose: "Предназначен для упражнений при амблиопии, сочетающих зрительные раздражения со звуковыми, кинестетическими и тактильными сигналами, для восстановления и закрепления правильной монокулярной локализации.",
+            purposeUa: "Призначений для вправ при амбліопії, що поєднують зорові подразнення зі звуковими, кінестетичними та тактильними сигналами, з метою відновлення та закріплення правильної монокулярної локалізації.",
+            application: "Используется для лечения амблиопии у детей в специализированных кабинетах и учреждениях. Игровой формат с 'головой львенка' и звуковыми сигналами делает занятия увлекательными. Позволяет даже у младших дошкольников определить остроту зрения.",
+            applicationUa: "Використовується для лікування амбліопії у дітей в спеціалізованих кабінетах та установах. Ігровий формат з 'головою левеняти' та звуковими сигналами робить заняття цікавими. Дозволяє навіть у молодших дошкільнят визначити гостроту зору.",
+            features: [
+                "Диаметры отверстий для световых тестов: 1,5; 5 и 10 мм",
+                "Максимальная яркость световых тестов: не менее 55 кд/м²",
+                "Количество отверстий: 17 шт на каждой решетке",
+                "Диаметр токопроводящих тестов: 2 и 4 мм",
+                "Количество токопроводящих тестов: 25 шт",
+                "Питание: 220±22 В",
+                "Потребляемая мощность: не более 30 ВА",
+                "Габаритные размеры: 267x360x80 мм",
+                "Масса: 5 кг (без сменных частей); 12 кг (полный комплект)"
+            ],
+            featuresUa: [
+                "Діаметри отворів для світлових тестів: 1,5; 5 і 10 мм",
+                "Максимальна яскравість світлових тестів: не менше 55 кд/м²",
+                "Кількість отворів: 17 шт на кожній решітці",
+                "Діаметр струмопровідних тестів: 2 і 4 мм",
+                "Кількість струмопровідних тестів: 25 шт",
+                "Живлення: 220±22 В",
+                "Споживана потужність: не більше 30 ВА",
+                "Габаритні розміри: 267x360x80 мм",
+                "Маса: 5 кг (без змінних частин); 12 кг (повний комплект)"
+            ],
+            inStock: true
+        },
+        {
+            id: 13,
+            name: "Аппарат отсасывающий медицинский АОХ-01 (с штативом напольным)",
+            nameUa: "Апарат відсмоктувальний медичний АОХ-01 (зі штативом підлоговим)",
+            category: "Хирургия",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Аппарат отсасывающий",
+            purpose: "Предназначен для отсасывания жидкостей различных консистенций из ран и открытых полостей при хирургических операциях.",
+            purposeUa: "Призначений для відсмоктування рідин різних консистенцій з ран та відкритих порожнин при хірургічних операціях.",
+            application: "Отсос содержимого производится наконечником в результате разрежения, создаваемого вакуум-насосом. Создаваемое разрежение можно плавно регулировать и контролировать по вакуумметру, встроенному в аппарат. Аппарат имеет два сообщающихся сборника для сбора отсасываемой массы.",
+            applicationUa: "Відсмоктування вмісту проводиться наконечником в результаті розрідження, створюваного вакуум-насосом. Створюване розрідження можна плавно регулювати і контролювати по вакуумметру, вбудованому в апарат. Апарат має два збірники, що сполучаються, для збору відсмоктувальної маси.",
+            features: [
+                "Производительность по жидкости: не менее 3 л/мин",
+                "Минимальное остаточное давление в сборнике: не более 20 кПа",
+                "Пределы регулировки остаточного давления: от 20 до 98 кПа",
+                "Потребляемая мощность: не более 130 ВА",
+                "Габаритные размеры: 360x240x565 мм",
+                "Масса: не более 22 кг"
+            ],
+            featuresUa: [
+                "Продуктивність по рідині: не менше 3 л/хв",
+                "Мінімальний залишковий тиск у збірнику: не більше 20 кПа",
+                "Межі регулювання залишкового тиску: від 20 до 98 кПа",
+                "Споживана потужність: не більше 130 ВА",
+                "Габаритні розміри: 360x240x565 мм",
+                "Маса: не більше 22 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 14,
+            name: "Аппарат отсасывающий медицинский АОХ-01Н",
+            nameUa: "Апарат відсмоктувальний медичний АОХ-01Н",
+            category: "Хирургия",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Аппарат отсасывающий",
+            purpose: "Предназначен для отсасывания жидкостей различных консистенций из ран и открытых полостей при хирургических операциях.",
+            purposeUa: "Призначений для відсмоктування рідин різних консистенцій з ран та відкритих порожнин при хірургічних операціях.",
+            application: "Отсос содержимого производится наконечником в результате разрежения, создаваемого вакуум-насосом. Создаваемое разрежение можно плавно регулировать и контролировать по вакуумметру, встроенному в аппарат. Аппарат имеет два сообщающихся сборника для сбора отсасываемой массы.",
+            applicationUa: "Відсмоктування вмісту проводиться наконечником в результаті розрідження, створюваного вакуум-насосом. Створюване розрідження можна плавно регулювати і контролювати по вакуумметру, вбудованому в апарат. Апарат має два збірники, що сполучаються, для збору відсмоктувальної маси.",
+            features: [
+                "Производительность по жидкости: не менее 3 л/мин",
+                "Минимальное остаточное давление в сборнике: не более 20 кПа",
+                "Пределы регулировки остаточного давления: от 20 до 98 кПа",
+                "Потребляемая мощность: не более 130 ВА",
+                "Габаритные размеры: 360x240x565 мм",
+                "Масса: не более 22 кг"
+            ],
+            featuresUa: [
+                "Продуктивність по рідині: не менше 3 л/хв",
+                "Мінімальний залишковий тиск у збірнику: не більше 20 кПа",
+                "Межі регулювання залишкового тиску: від 20 до 98 кПа",
+                "Споживана потужність: не більше 130 ВА",
+                "Габаритні розміри: 360x240x565 мм",
+                "Маса: не більше 22 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 15,
+            name: "Аппарат отсасывающий медицинский АПБ-02 (с штативом напольным)",
+            nameUa: "Апарат відсмоктувальний медичний АПБ-02 (зі штативом підлоговим)",
+            category: "Гинекология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Аппарат отсасывающий",
+            purpose: "Предназначен для прерывания беременности в клинических условиях путём удаления содержимого матки.",
+            purposeUa: "Призначений для переривання вагітності в клінічних умовах шляхом видалення вмісту матки.",
+            application: "Отсос содержимого производится наконечником в результате разрежения, создаваемого вакуум-насосом. Разрежение плавно регулируется и контролируется по вакуумметру. Аппарат имеет два сообщающихся сборника для сбора отсасываемой массы.",
+            applicationUa: "Відсмоктування вмісту проводиться наконечником в результаті розрідження, створюваного вакуум-насосом. Розрідження плавно регулюється і контролюється по вакуумметру. Апарат має два збірники, що сполучаються, для збору відсмоктувальної маси.",
+            features: [
+                "Производительность по жидкости: не менее 3 л/мин",
+                "Минимальное остаточное давление в сборнике: не более 20 кПа",
+                "Пределы регулировки остаточного давления: от 20 до 98 кПа",
+                "Потребляемая мощность: не более 130 ВА",
+                "Габаритные размеры: 360x240x565 мм",
+                "Масса: не более 22 кг"
+            ],
+            featuresUa: [
+                "Продуктивність по рідині: не менше 3 л/хв",
+                "Мінімальний залишковий тиск у збірнику: не більше 20 кПа",
+                "Межі регулювання залишкового тиску: від 20 до 98 кПа",
+                "Споживана потужність: не більше 130 ВА",
+                "Габаритні розміри: 360x240x565 мм",
+                "Маса: не більше 22 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 16,
+            name: "Аппарат отсасывающий медицинский АПБ-02Н",
+            nameUa: "Апарат відсмоктувальний медичний АПБ-02Н",
+            category: "Гинекология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Аппарат отсасывающий",
+            purpose: "Предназначен для прерывания беременности в клинических условиях путём удаления содержимого матки.",
+            purposeUa: "Призначений для переривання вагітності в клінічних умовах шляхом видалення вмісту матки.",
+            application: "Отсос содержимого производится наконечником в результате разрежения, создаваемого вакуум-насосом. Разрежение плавно регулируется и контролируется по вакуумметру. Аппарат имеет два сообщающихся сборника для сбора отсасываемой массы.",
+            applicationUa: "Відсмоктування вмісту проводиться наконечником в результаті розрідження, створюваного вакуум-насосом. Розрідження плавно регулюється і контролюється по вакуумметру. Апарат має два збірники, що сполучаються, для збору відсмоктувальної маси.",
+            features: [
+                "Производительность по жидкости: не менее 3 л/мин",
+                "Минимальное остаточное давление в сборнике: не более 20 кПа",
+                "Пределы регулировки остаточного давления: от 20 до 98 кПа",
+                "Потребляемая мощность: не более 130 ВА",
+                "Габаритные размеры: 360x240x565 мм",
+                "Масса: не более 22 кг"
+            ],
+            featuresUa: [
+                "Продуктивність по рідині: не менше 3 л/хв",
+                "Мінімальний залишковий тиск у збірнику: не більше 20 кПа",
+                "Межі регулювання залишкового тиску: від 20 до 98 кПа",
+                "Споживана потужність: не більше 130 ВА",
+                "Габаритні розміри: 360x240x565 мм",
+                "Маса: не більше 22 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 17,
+            name: "Ингалятор ИП-111П",
+            nameUa: "Інгалятор ІП-111П",
+            category: "Ингаляторы и ЛОР-оборудование",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Ингалятор",
+            purpose: "Предназначен для лечения и профилактики заболеваний верхних дыхательных путей и лёгких нагретыми аэрозолями жидких лекарственных веществ.",
+            purposeUa: "Призначений для лікування та профілактики захворювань верхніх дихальних шляхів і легенів нагрітими аерозолями рідких лікарських речовин.",
+            application: "Удобный и простой в эксплуатации ингалятор, который может использоваться в физиотерапевтических кабинетах, больницах и дома. Позволяет регулировать время ингаляции и температуру аэрозоля в пределах от 35°C до 43°C, а также автоматически подавать аэрозоль в такт дыханию пациента.",
+            applicationUa: "Зручний і простий в експлуатації інгалятор, який може використовуватися у фізіотерапевтичних кабінетах, лікарнях і вдома. Дозволяє регулювати час інгаляції та температуру аерозолю в межах від 35°C до 43°C, а також автоматично подавати аерозоль в такт диханню пацієнта.",
+            features: [
+                "Производительность по жидкости: 0,4 г/мин (высокодисперсное генерирование), 0,8 г/мин (низкодисперсное генерирование)",
+                "Размер частиц аэрозоля: не менее 90% частиц до 10 мкм (высокодисперсное), не менее 90% частиц от 1 до 35 мкм (низкодисперсное)",
+                "Время установления рабочего режима: 7 мин",
+                "Питание: 220±22 В",
+                "Потребляемая мощность: не более 200 ВА",
+                "Габаритные размеры: 525x170x290 мм",
+                "Масса: не более 12,5 кг"
+            ],
+            featuresUa: [
+                "Продуктивність по рідині: 0,4 г/хв (високодисперсне генерування), 0,8 г/хв (низькодисперсне генерування)",
+                "Розмір частинок аерозолю: не менше 90% частинок до 10 мкм (високодисперсне), не менше 90% частинок від 1 до 35 мкм (низькодисперсне)",
+                "Час встановлення робочого режиму: 7 хв",
+                "Живлення: 220±22 В",
+                "Споживана потужність: не більше 200 ВА",
+                "Габаритні розміри: 525x170x290 мм",
+                "Маса: не більше 12,5 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 18,
+            name: "Ингалятор ИС-111П",
+            nameUa: "Інгалятор ІС-111П",
+            category: "Ингаляторы и ЛОР-оборудование",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Ингалятор",
+            purpose: "Предназначен для лечения и профилактики заболеваний верхних дыхательных путей и лёгких нагретыми высокодисперсными и низкодисперсными аэрозолями жидких лекарственных веществ.",
+            purposeUa: "Призначений для лікування та профілактики захворювань верхніх дихальних шляхів і легенів нагрітими високодисперсними та низькодисперсними аерозолями рідких лікарських речовин.",
+            application: "Напольная установка для использования в медицинских учреждениях. Оснащена столом с раковиной и системой слива. Позволяет регулировать время ингаляции, температуру аэрозоля от 35°C до 43°C и автоматически подавать аэрозоль в такт дыханию пациента.",
+            applicationUa: "Підлогова установка для використання в медичних закладах. Оснащена столом з раковиною та системою зливу. Дозволяє регулювати час інгаляції, температуру аерозолю від 35°C до 43°C та автоматично подавати аерозоль в такт диханню пацієнта.",
+            features: [
+                "Производительность по жидкости: 0,4 г/мин (высокодисперсное генерирование), 0,8 г/мин (низкодисперсное генерирование)",
+                "Размер частиц: не менее 90% до 10 мкм (высокодисперсное), не менее 90% от 1 до 35 мкм (низкодисперсное)",
+                "Время установления рабочего режима: 7 мин",
+                "Питание: 220±22 В",
+                "Потребляемая мощность: не более 200 ВА",
+                "Габаритные размеры: 732x560x1265 мм"
+            ],
+            featuresUa: [
+                "Продуктивність по рідині: 0,4 г/хв (високодисперсне генерування), 0,8 г/хв (низькодисперсне генерування)",
+                "Розмір частинок: не менше 90% до 10 мкм (високодисперсне), не менше 90% від 1 до 35 мкм (низькодисперсне)",
+                "Час встановлення робочого режиму: 7 хв",
+                "Живлення: 220±22 В",
+                "Споживана потужність: не більше 200 ВА",
+                "Габаритні розміри: 732x560x1265 мм"
+            ],
+            inStock: true
+        },
+        {
+            id: 19,
+            name: "Генератор электроаэрозолей групповой ГЭГ-2",
+            nameUa: "Генератор електроаерозолів груповий ГЕГ-2",
+            category: "Ингаляторы и ЛОР-оборудование",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Генератор электроаэрозолей",
+            purpose: "Предназначен для получения электроаэрозолей водных растворов лекарственных веществ для лечения и профилактики заболеваний.",
+            purposeUa: "Призначений для отримання електроаерозолів водних розчинів лікарських речовин для лікування та профілактики захворювань.",
+            application: "Используется для групповой терапии (до 10-20 человек) при заболеваниях органов дыхания, таких как риниты, бронхиты и астма. Также применяется для профилактики на производствах с высоким уровнем запыленности и для дезинфекции помещений.",
+            applicationUa: "Використовується для групової терапії (до 10-20 осіб) при захворюваннях органів дихання, таких як риніти, бронхіти та астма. Також застосовується для профілактики на виробництвах з високим рівнем запиленості та для дезінфекції приміщень.",
+            features: [
+                "Производительность по жидкости: не менее 3 г/мин",
+                "Размер частиц аэрозоля: не менее 70% от 1 до 10 мкм",
+                "Напряжение электризации: 600 В",
+                "Питание: 220±22 В",
+                "Потребляемая мощность: не более 500 ВА",
+                "Габаритные размеры: распылитель - 1335xØ330 мм; пульт - 260x172x82 мм",
+                "Масса: не более 80 кг"
+            ],
+            featuresUa: [
+                "Продуктивність по рідині: не менше 3 г/хв",
+                "Розмір частинок аерозолю: не менше 70% від 1 до 10 мкм",
+                "Напруга електризації: 600 В",
+                "Живлення: 220±22 В",
+                "Споживана потужність: не більше 500 ВА",
+                "Габаритні розміри: розпилювач - 1335xØ330 мм; пульт - 260x172x82 мм",
+                "Маса: не більше 80 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 20,
+            name: "Генератор электроаэрозолей групповой ГЭГ-2 (без компрессора)",
+            nameUa: "Генератор електроаерозолів груповий ГЕГ-2 (без компресора)",
+            category: "Ингаляторы и ЛОР-оборудование",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Генератор электроаэрозолей",
+            purpose: "Предназначен для получения электроаэрозолей водных растворов лекарственных веществ для лечения и профилактики заболеваний.",
+            purposeUa: "Призначений для отримання електроаерозолів водних розчинів лікарських речовин для лікування та профілактики захворювань.",
+            application: "Используется для групповой терапии (до 10-20 человек) при заболеваниях органов дыхания. Требует отдельного компрессора для работы.",
+            applicationUa: "Використовується для групової терапії (до 10-20 осіб) при захворюваннях органів дихання. Потребує окремого компресора для роботи.",
+            features: [
+                "Производительность по жидкости: не менее 3 г/мин",
+                "Размер частиц аэрозоля: не менее 70% от 1 до 10 мкм",
+                "Напряжение электризации: 600 В",
+                "Питание: 220±22 В",
+                "Потребляемая мощность: не более 500 ВА",
+                "Габаритные размеры: распылитель - 1335xØ330 мм; пульт - 260x172x82 мм",
+                "Масса: не более 80 кг"
+            ],
+            featuresUa: [
+                "Продуктивність по рідині: не менше 3 г/хв",
+                "Розмір частинок аерозолю: не менше 70% від 1 до 10 мкм",
+                "Напруга електризації: 600 В",
+                "Живлення: 220±22 В",
+                "Споживана потужність: не більше 500 ВА",
+                "Габаритні розміри: розпилювач - 1335xØ330 мм; пульт - 260x172x82 мм",
+                "Маса: не більше 80 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 21,
+            name: "Компрессор УК-40",
+            nameUa: "Компресор УК-40",
+            category: "Ингаляторы и ЛОР-оборудование",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Компрессор",
+            purpose: "Используется в комплекте с электроаэрозольным генератором ГЭГ-2 для создания давления сжатого газа.",
+            purposeUa: "Використовується в комплекті з електроаерозольним генератором ГЕГ-2 для створення тиску стисненого газу.",
+            application: "Обеспечивает подачу сжатого газа для работы генератора электроаэрозолей, необходимого для распыления лекарственных веществ.",
+            applicationUa: "Забезпечує подачу стисненого газу для роботи генератора електроаерозолів, необхідного для розпилення лікарських речовин.",
+            features: [
+                "Работает со сжатым газом под давлением 150±10 кПа",
+                "Потребляемая мощность: не более 500 ВА",
+                "Масса: не более 80 кг"
+            ],
+            featuresUa: [
+                "Працює зі стисненим газом під тиском 150±10 кПа",
+                "Споживана потужність: не більше 500 ВА",
+                "Маса: не більше 80 кг"
+            ],
+            inStock: true
+        },
+        {
+            id: 5,
+            name: "Зеркало стоматологическое ЗБ-1",
+            nameUa: "Дзеркало стоматологічне ЗБ-1",
+            category: "Стоматология",
+            price: null,
+            image: "https://via.placeholder.com/300x200?text=Зеркало стоматологическое",
+            purpose: "Предназначено для обследования зубов и полости рта.",
+            purposeUa: "Призначене для обстеження зубів та порожнини рота.",
+            application: null,
+            applicationUa: null,
+            features: [
+                "Диаметр: 22 мм"
+            ],
+            featuresUa: [
+                "Діаметр: 22 мм"
+            ],
+            inStock: true
+        }
+    ];
+
+    // Категории товаров
+    const categories = [
+        { id: "all", name: "Все товары", nameUa: "Всі товари" },
+        { id: "Офтальмология", name: "Офтальмология", nameUa: "Офтальмологія" },
+        { id: "Хирургия", name: "Хирургия", nameUa: "Хірургія" },
+        { id: "Гинекология", name: "Гинекология", nameUa: "Гінекологія" },
+        { id: "Ингаляторы и ЛОР-оборудование", name: "Ингаляционная аппаратура", nameUa: "Інгаляційна апаратура" },
+        { id: "Стоматология", name: "Стоматология", nameUa: "Стоматологія" }
+    ];
+
+    // Настройки Telegram бота
+    const chatId = "1312342943";
+    const botToken = "8357407082:AAHs_nYFp7kzGlebt6bYuYBnpuTqlqN3zRc";
+
+    // Переменные для состояния
+    let currentLanguage = 'ru';
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let currentProduct = null;
+    let currentQuantity = 1;
+    let selectedCategory = 'all';
+    let searchQuery = '';
+    let productsToShow = 6;
+    let allProducts = [...products];
+
+    // Объявляем переменные для DOM элементов
+    let menuToggle, mainNav, languageBtn, currentLangSpan, cartIcon, cartCount;
+    let cartModal, closeCartModal, cartItems, cartTotal, clearCartBtn, checkoutBtn;
+    let catalogContainer, categoryFilter, searchInput;
+    let productModal, closeProductModal, modalProductImage, modalProductName, modalProductStatus;
+    let modalProductPrice, modalPurposeText, modalApplicationText, modalProductFeatures;
+    let decreaseQuantity, increaseQuantity, productQuantity, addToCartModal, buyNowModal;
+    let contactButton, contactModal, closeModal, modalForm, contactForm;
+    let loadMoreContainer, loadMoreBtn;
+
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeElements();
+        initCategories();
+        renderProducts();
+        updateCartCount();
+        setupEventListeners();
+        
+        // Восстанавливаем корзину из localStorage
+        if (cart.length > 0) {
+            renderCartItems();
+        }
+    });
+
+    // Инициализация DOM элементов
+    function initializeElements() {
+        // Основные элементы
+        menuToggle = document.getElementById('menuToggle');
+        mainNav = document.getElementById('mainNav');
+        languageBtn = document.getElementById('languageBtn');
+        currentLangSpan = document.getElementById('currentLang');
+        cartIcon = document.getElementById('cartIcon');
+        cartCount = document.getElementById('cartCount');
+        
+        // Элементы корзины
+        cartModal = document.getElementById('cartModal');
+        closeCartModal = document.getElementById('closeCartModal');
+        cartItems = document.getElementById('cartItems');
+        cartTotal = document.getElementById('cartTotal');
+        clearCartBtn = document.getElementById('clearCart');
+        checkoutBtn = document.getElementById('checkout');
+        
+        // Элементы каталога
+        catalogContainer = document.getElementById('catalog-container');
+        categoryFilter = document.getElementById('categoryFilter');
+        searchInput = document.getElementById('searchInput');
+        
+        // Элементы модального окна товара
+        productModal = document.getElementById('productModal');
+        closeProductModal = document.getElementById('closeProductModal');
+        modalProductImage = document.getElementById('modalProductImage');
+        modalProductName = document.getElementById('modalProductName');
+        modalProductStatus = document.getElementById('modalProductStatus');
+        modalProductPrice = document.getElementById('modalProductPrice');
+        modalPurposeText = document.getElementById('modalPurposeText');
+        modalApplicationText = document.getElementById('modalApplicationText');
+        modalProductFeatures = document.getElementById('modalProductFeatures');
+        decreaseQuantity = document.getElementById('decreaseQuantity');
+        increaseQuantity = document.getElementById('increaseQuantity');
+        productQuantity = document.getElementById('productQuantity');
+        addToCartModal = document.getElementById('addToCartModal');
+        buyNowModal = document.getElementById('buyNowModal');
+        
+        // Элементы контактной формы
+        contactButton = document.getElementById('contactButton');
+        contactModal = document.getElementById('contactModal');
+        closeModal = document.getElementById('closeModal');
+        modalForm = document.getElementById('modalForm');
+        contactForm = document.getElementById('contactForm');
+        
+        // Кнопка загрузки
+        loadMoreContainer = document.getElementById('loadMoreContainer');
+        loadMoreBtn = document.getElementById('loadMoreBtn');
+    }
+
+    // Настройка обработчиков событий
+    function setupEventListeners() {
+        // Основные элементы
+        if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
+        if (languageBtn) languageBtn.addEventListener('click', toggleLanguage);
+        if (cartIcon) cartIcon.addEventListener('click', openCartModal);
+        
+        // Корзина
+        if (closeCartModal) closeCartModal.addEventListener('click', closeCart);
+        if (clearCartBtn) clearCartBtn.addEventListener('click', clearCart);
+        if (checkoutBtn) checkoutBtn.addEventListener('click', checkout);
+        
+        // Поиск и фильтрация
+        if (searchInput) searchInput.addEventListener('input', handleSearch);
+        
+        // Модальное окно товара
+        if (closeProductModal) closeProductModal.addEventListener('click', closeProductModalFunc);
+        if (decreaseQuantity) decreaseQuantity.addEventListener('click', decreaseProductQuantity);
+        if (increaseQuantity) increaseQuantity.addEventListener('click', increaseProductQuantity);
+        if (addToCartModal) addToCartModal.addEventListener('click', addToCartFromModal);
+        if (buyNowModal) buyNowModal.addEventListener('click', buyNow);
+        
+        // Контактная форма
+        if (contactButton) contactButton.addEventListener('click', openContactModal);
+        if (closeModal) closeModal.addEventListener('click', closeContactModal);
+        if (modalForm) modalForm.addEventListener('submit', handleModalFormSubmit);
+        if (contactForm) contactForm.addEventListener('submit', handleContactFormSubmit);
+        
+        // Загрузка товаров
+        if (loadMoreBtn) loadMoreBtn.addEventListener('click', loadMoreProducts);
+
+        // Закрытие модальных окон при клике вне их
+        document.addEventListener('click', function(event) {
+            if (event.target === productModal) {
+                closeProductModalFunc();
             }
-        ];
-
-        // Категории товаров
-        const categories = [
-            { id: "all", name: "Все товары" },
-            { id: "electronics", name: "Электроника" },
-            { id: "furniture", name: "Мебель" },
-            { id: "office", name: "Канцелярия" }
-        ];
-
-        // Настройки Telegram бота
-        const chatId = "1312342943";
-        const botToken = "8357407082:AAHs_nYFp7kzGlebt6bYuYBnpuTqlqN3zRc";
-
-        // Переменные для состояния
-        let currentLanguage = 'ru';
-        let cart = [];
-        let currentProduct = null;
-        let currentQuantity = 1;
-        let selectedCategory = 'all';
-        let searchQuery = '';
-        let productsToShow = 6; // Количество товаров для первоначального показа
-        let allProducts = [...products]; // Копия всех товаров
-
-        // DOM элементы
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-        const languageBtn = document.getElementById('languageBtn');
-        const currentLangSpan = document.getElementById('currentLang');
-        const cartIcon = document.getElementById('cartIcon');
-        const cartCount = document.getElementById('cartCount');
-        const cartModal = document.getElementById('cartModal');
-        const closeCartModal = document.getElementById('closeCartModal');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const clearCartBtn = document.getElementById('clearCart');
-        const checkoutBtn = document.getElementById('checkout');
-        const catalogContainer = document.getElementById('catalog-container');
-        const categoryFilter = document.getElementById('categoryFilter');
-        const searchInput = document.getElementById('searchInput');
-        const productModal = document.getElementById('productModal');
-        const closeProductModal = document.getElementById('closeProductModal');
-        const modalProductImage = document.getElementById('modalProductImage');
-        const modalProductName = document.getElementById('modalProductName');
-        const modalProductRating = document.getElementById('modalProductRating');
-        const modalRatingValue = document.getElementById('modalRatingValue');
-        const modalProductStatus = document.getElementById('modalProductStatus');
-        const modalProductPrice = document.getElementById('modalProductPrice');
-        const modalProductDescription = document.getElementById('modalProductDescription');
-        const modalProductFeatures = document.getElementById('modalProductFeatures');
-        const decreaseQuantity = document.getElementById('decreaseQuantity');
-        const increaseQuantity = document.getElementById('increaseQuantity');
-        const productQuantity = document.getElementById('productQuantity');
-        const addToCartModal = document.getElementById('addToCartModal');
-        const buyNowModal = document.getElementById('buyNowModal');
-        const contactButton = document.getElementById('contactButton');
-        const contactModal = document.getElementById('contactModal');
-        const closeModal = document.getElementById('closeModal');
-        const modalForm = document.getElementById('modalForm');
-        const contactForm = document.getElementById('contactForm');
-        const loadMoreContainer = document.getElementById('loadMoreContainer');
-        const loadMoreBtn = document.getElementById('loadMoreBtn');
-
-        // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            initCategories();
-            renderProducts();
-            updateCartCount();
-            
-            // Обработчики событий
-            menuToggle.addEventListener('click', toggleMenu);
-            languageBtn.addEventListener('click', toggleLanguage);
-            cartIcon.addEventListener('click', openCartModal);
-            closeCartModal.addEventListener('click', closeCart);
-            clearCartBtn.addEventListener('click', clearCart);
-            checkoutBtn.addEventListener('click', checkout);
-            searchInput.addEventListener('input', handleSearch);
-            closeProductModal.addEventListener('click', closeProductModalFunc);
-            decreaseQuantity.addEventListener('click', decreaseProductQuantity);
-            increaseQuantity.addEventListener('click', increaseProductQuantity);
-            addToCartModal.addEventListener('click', addToCartFromModal);
-            buyNowModal.addEventListener('click', buyNow);
-            contactButton.addEventListener('click', openContactModal);
-            closeModal.addEventListener('click', closeContactModal);
-            modalForm.addEventListener('submit', handleModalFormSubmit);
-            contactForm.addEventListener('submit', handleContactFormSubmit);
-            loadMoreBtn.addEventListener('click', loadMoreProducts);
-            
-            // Закрытие модальных окон при клике вне их
-            window.addEventListener('click', function(event) {
-                if (event.target === productModal) {
-                    closeProductModalFunc();
-                }
-                if (event.target === cartModal) {
-                    closeCart();
-                }
-                if (event.target === contactModal) {
-                    closeContactModal();
-                }
-                // Закрытие меню при клике вне его
-                if (window.innerWidth <= 768 && mainNav.classList.contains('active') && 
-                    !event.target.closest('#mainNav') && !event.target.closest('#menuToggle')) {
-                    toggleMenu();
-                }
-            });
+            if (event.target === cartModal) {
+                closeCart();
+            }
+            if (event.target === contactModal) {
+                closeContactModal();
+            }
         });
 
-        // Инициализация категорий
-        function initCategories() {
-            categoryFilter.innerHTML = '';
-            categories.forEach(category => {
-                const button = document.createElement('button');
-                button.className = 'category-btn';
-                if (category.id === selectedCategory) {
-                    button.classList.add('active');
-                }
-                button.textContent = category.name;
-                button.dataset.category = category.id;
-                button.addEventListener('click', () => {
-                    selectedCategory = category.id;
-                    document.querySelectorAll('.category-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    button.classList.add('active');
-                    productsToShow = 6; // Сбрасываем количество показываемых товаров
-                    renderProducts();
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768 && mainNav && mainNav.classList.contains('active') && 
+                !event.target.closest('#mainNav') && !event.target.closest('#menuToggle')) {
+                toggleMenu();
+            }
+        });
+    }
+
+    // Инициализация категорий
+    function initCategories() {
+        if (!categoryFilter) return;
+        
+        categoryFilter.innerHTML = '';
+        categories.forEach(category => {
+            const button = document.createElement('button');
+            button.className = 'category-btn';
+            if (category.id === selectedCategory) {
+                button.classList.add('active');
+            }
+            
+            const categoryName = currentLanguage === 'ua' && category.nameUa ? category.nameUa : category.name;
+            button.textContent = categoryName;
+            button.dataset.category = category.id;
+            
+            button.addEventListener('click', () => {
+                selectedCategory = category.id;
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
                 });
-                categoryFilter.appendChild(button);
+                button.classList.add('active');
+                productsToShow = 6;
+                renderProducts();
             });
+            
+            categoryFilter.appendChild(button);
+        });
+    }
+
+    // Рендер товаров
+    function renderProducts() {
+        if (!catalogContainer) return;
+        
+        catalogContainer.innerHTML = '';
+        
+        let filteredProducts = allProducts;
+        
+        if (selectedCategory !== 'all') {
+            filteredProducts = filteredProducts.filter(product => product.category === selectedCategory);
         }
+        
+        if (searchQuery) {
+            const query = searchQuery.toLowerCase();
+            filteredProducts = filteredProducts.filter(product => 
+                product.name.toLowerCase().includes(query) || 
+                (product.purpose && product.purpose.toLowerCase().includes(query)) ||
+                (product.application && product.application.toLowerCase().includes(query))
+            );
+        }
+        
+        if (filteredProducts.length === 0) {
+            catalogContainer.innerHTML = '<p data-lang="ru" style="grid-column: 1 / -1; text-align: center; padding: 40px;">Товары не найдены</p><p data-lang="ua" style="grid-column: 1 / -1; text-align: center; padding: 40px;" class="hidden-lang">Товари не знайдено</p>';
+            if (loadMoreContainer) loadMoreContainer.style.display = 'none';
+            return;
+        }
+        
+        const productsToRender = filteredProducts.slice(0, productsToShow);
+        
+        productsToRender.forEach(product => {
+            const productElement = document.createElement('div');
+            productElement.className = 'catalog-item animated fadeIn';
+            
+            const productName = currentLanguage === 'ua' && product.nameUa ? product.nameUa : product.name;
+            const productPurpose = currentLanguage === 'ua' && product.purposeUa ? product.purposeUa : product.purpose;
+            const productApplication = currentLanguage === 'ua' && product.applicationUa ? product.applicationUa : product.application;
 
-        // Рендер товаров
-        function renderProducts() {
-            catalogContainer.innerHTML = '';
-            
-            let filteredProducts = allProducts;
-            
-            // Фильтрация по категории
-            if (selectedCategory !== 'all') {
-                filteredProducts = filteredProducts.filter(product => product.category === selectedCategory);
-            }
-            
-            // Фильтрация по поисковому запросу
-            if (searchQuery) {
-                const query = searchQuery.toLowerCase();
-                filteredProducts = filteredProducts.filter(product => 
-                    product.name.toLowerCase().includes(query) || 
-                    product.description.toLowerCase().includes(query)
-                );
-            }
-            
-            if (filteredProducts.length === 0) {
-                catalogContainer.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px;">Товары не найдены</p>';
-                loadMoreContainer.style.display = 'none';
-                return;
-            }
-            
-            // Показываем только первые productsToShow товаров
-            const productsToRender = filteredProducts.slice(0, productsToShow);
-            
-            productsToRender.forEach(product => {
-                const productElement = document.createElement('div');
-                productElement.className = 'catalog-item animated fadeIn';
-                // Название и описание с учетом языка
-                const productName = currentLanguage === 'ua' && product.nameUa ? product.nameUa : product.name;
-                const productDescription = currentLanguage === 'ua' && product.descriptionUa ? product.descriptionUa : product.description;
-
-                productElement.innerHTML = `
-                    <img src="${product.image}" alt="${productName}">
-                    <div class="item-info">
-                        <span class="item-category">${getCategoryName(product.category)}</span>
-                        <h3>${productName}</h3>
-                        <p>${productDescription.substring(0, 100)}...</p>
-                        <div class="price">
-                            <span>${formatPrice(product.price)}</span>
-                            <button class="btn btn-add" data-id="${product.id}">
-                                <i class="fas fa-cart-plus"></i>
-                            </button>
-                        </div>
+            productElement.innerHTML = `
+                <img src="${product.image}" alt="${productName}">
+                <div class="item-info">
+                    <h3>${productName}</h3>
+                    <div class="product-purpose">
+                        <p>${productPurpose ? productPurpose.substring(0, 80) + '...' : ''}</p>
                     </div>
-                `;
-                catalogContainer.appendChild(productElement);
-                
-                // Обработчики событий для товара
-                const addButton = productElement.querySelector('.btn-add');
-                addButton.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    addToCart(product.id);
-                });
-                
-                productElement.addEventListener('click', () => {
-                    openProductModal(product.id);
-                });
+                    <div class="price">
+                        <span>${formatPrice(product.price)}</span>
+                        <button class="btn btn-add" data-id="${product.id}">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            catalogContainer.appendChild(productElement);
+            
+            // Обработчики событий для товара
+            const addButton = productElement.querySelector('.btn-add');
+            addButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                addToCart(product.id);
             });
             
-            // Показываем кнопку "Показать еще", если товаров больше, чем отображается
+            productElement.addEventListener('click', () => {
+                openProductModal(product.id);
+            });
+        });
+        
+        if (loadMoreContainer) {
             if (filteredProducts.length > productsToShow) {
                 loadMoreContainer.style.display = 'flex';
             } else {
                 loadMoreContainer.style.display = 'none';
             }
         }
+    }
 
-        // Загрузка дополнительных товаров
-        function loadMoreProducts() {
-            productsToShow += 6;
-            renderProducts();
+    // Загрузка дополнительных товаров
+    function loadMoreProducts() {
+        productsToShow += 6;
+        renderProducts();
+    }
+
+    // Получение названия категории по ID
+    function getCategoryName(categoryId) {
+        const category = categories.find(cat => cat.id === categoryId);
+        if (!category) return currentLanguage === 'ru' ? 'Другое' : 'Інше';
+        
+        return currentLanguage === 'ua' && category.nameUa ? category.nameUa : category.name;
+    }
+
+    // Форматирование цены
+    function formatPrice(price) {
+        return new Intl.NumberFormat('uk-UA', {
+            style: 'currency',
+            currency: 'UAH',
+            minimumFractionDigits: 0
+        }).format(price);
+    }
+
+    // Поиск товаров
+    function handleSearch(e) {
+        searchQuery = e.target.value;
+        productsToShow = 6;
+        renderProducts();
+    }
+
+    // Открытие модального окна товара
+    function openProductModal(productId) {
+        currentProduct = allProducts.find(p => p.id === productId);
+        if (!currentProduct || !productModal) return;
+        
+        currentQuantity = 1;
+        
+        modalProductImage.src = currentProduct.image;
+        
+        if (currentLanguage === 'ua' && currentProduct.nameUa) {
+            modalProductName.textContent = currentProduct.nameUa;
+        } else {
+            modalProductName.textContent = currentProduct.name;
         }
-
-        // Получение названия категории по ID
-        function getCategoryName(categoryId) {
-            const category = categories.find(cat => cat.id === categoryId);
-            return category ? category.name : 'Другое';
+        
+        modalProductPrice.textContent = formatPrice(currentProduct.price);
+        
+        if (currentLanguage === 'ua' && currentProduct.purposeUa) {
+            modalPurposeText.textContent = currentProduct.purposeUa;
+        } else {
+            modalPurposeText.textContent = currentProduct.purpose;
         }
-
-        // Форматирование цены
-        function formatPrice(price) {
-            return new Intl.NumberFormat('uk-UA', {
-                style: 'currency',
-                currency: 'UAH',
-                minimumFractionDigits: 0
-            }).format(price);
+        
+        if (currentLanguage === 'ua' && currentProduct.applicationUa) {
+            modalApplicationText.textContent = currentProduct.applicationUa;
+        } else {
+            modalApplicationText.textContent = currentProduct.application;
         }
-
-        // Поиск товаров
-        function handleSearch(e) {
-            searchQuery = e.target.value;
-            productsToShow = 6; // Сбрасываем количество показываемых товаров
-            renderProducts();
+        
+        if (currentLanguage === 'ua') {
+            modalProductStatus.textContent = currentProduct.inStock ? 'В наявності' : 'Немає в наявності';
+        } else {
+            modalProductStatus.textContent = currentProduct.inStock ? 'В наличии' : 'Нет в наличии';
         }
-
-        // Открытие модального окна товара
-        function openProductModal(productId) {
-            currentProduct = allProducts.find(p => p.id === productId);
-            if (!currentProduct) return;
-            
-            currentQuantity = 1;
-            
-            // Заполнение данных товара с учетом языка
-            modalProductImage.src = currentProduct.image;
-            
-            // Название товара
-            if (currentLanguage === 'ua' && currentProduct.nameUa) {
-                modalProductName.textContent = currentProduct.nameUa;
-            } else {
-                modalProductName.textContent = currentProduct.name;
-            }
-            
-            modalProductPrice.textContent = formatPrice(currentProduct.price);
-            
-            // Описание товара
-            if (currentLanguage === 'ua' && currentProduct.descriptionUa) {
-                modalProductDescription.textContent = currentProduct.descriptionUa;
-            } else {
-                modalProductDescription.textContent = currentProduct.description;
-            }
-            
-            // Рейтинг
-            modalRatingValue.textContent = currentProduct.rating;
-            modalProductRating.innerHTML = '';
-            for (let i = 0; i < 5; i++) {
-                const star = document.createElement('i');
-                star.className = i < Math.floor(currentProduct.rating) ? 'fas fa-star' : 'far fa-star';
-                modalProductRating.appendChild(star);
-            }
-            
-            // Статус
-            if (currentLanguage === 'ua') {
-                modalProductStatus.textContent = currentProduct.inStock ? 'В наявності' : 'Немає в наявності';
-            } else {
-                modalProductStatus.textContent = currentProduct.inStock ? 'В наличии' : 'Нет в наличии';
-            }
-            modalProductStatus.className = `product-status ${currentProduct.inStock ? 'status-available' : 'status-unavailable'}`;
-            
-            // Характеристики
-            modalProductFeatures.innerHTML = '';
-            const features = currentLanguage === 'ua' && currentProduct.featuresUa ? currentProduct.featuresUa : currentProduct.features;
+        modalProductStatus.className = `product-status ${currentProduct.inStock ? 'status-available' : 'status-unavailable'}`;
+        
+        modalProductFeatures.innerHTML = '';
+        const features = currentLanguage === 'ua' && currentProduct.featuresUa ? currentProduct.featuresUa : currentProduct.features;
+        if (features) {
             features.forEach(feature => {
                 const featureItem = document.createElement('div');
                 featureItem.className = 'feature-item';
@@ -2101,364 +2827,408 @@
                 `;
                 modalProductFeatures.appendChild(featureItem);
             });
-            
-            // Количество
-            productQuantity.textContent = currentQuantity;
-            
-            // Показ модального окна
-            productModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
         }
+        
+        productQuantity.textContent = currentQuantity;
+        
+        productModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
 
-        // Закрытие модального окна товара
-        function closeProductModalFunc() {
-            productModal.classList.remove('active');
+    // Закрытие модального окна товара
+    function closeProductModalFunc() {
+        if (productModal) {
+            productModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+    }
 
-        // Изменение количества товара
-        function decreaseProductQuantity() {
-            if (currentQuantity > 1) {
-                currentQuantity--;
-                productQuantity.textContent = currentQuantity;
-            }
-        }
-
-        function increaseProductQuantity() {
-            currentQuantity++;
+    // Изменение количества товара
+    function decreaseProductQuantity() {
+        if (currentQuantity > 1) {
+            currentQuantity--;
             productQuantity.textContent = currentQuantity;
         }
+    }
 
-        // Добавление в корзину из модального окна
-        function addToCartFromModal() {
-            if (!currentProduct) return;
-            addToCart(currentProduct.id, currentQuantity);
-            closeProductModalFunc();
+    function increaseProductQuantity() {
+        currentQuantity++;
+        productQuantity.textContent = currentQuantity;
+    }
+
+    // Добавление в корзину из модального окна
+    function addToCartFromModal() {
+        if (!currentProduct) return;
+        addToCart(currentProduct.id, currentQuantity);
+        closeProductModalFunc();
+    }
+
+    // Покупка сейчас
+    function buyNow() {
+        if (!currentProduct) return;
+        addToCart(currentProduct.id, currentQuantity);
+        closeProductModalFunc();
+        openCartModal();
+    }
+
+    // Добавление в корзину
+    function addToCart(productId, quantity = 1) {
+        const product = allProducts.find(p => p.id === productId);
+        if (!product) return;
+        
+        const existingItem = cart.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                quantity: quantity
+            });
         }
+        
+        // Сохраняем в localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        updateCartCount();
+        showNotification(currentLanguage === 'ru' ? 'Товар добавлен в корзину' : 'Товар додано до кошика');
+    }
 
-        // Покупка сейчас
-        function buyNow() {
-            if (!currentProduct) return;
-            addToCart(currentProduct.id, currentQuantity);
-            closeProductModalFunc();
-            openCartModal();
-        }
+    // Обновление счетчика корзины
+    function updateCartCount() {
+        if (!cartCount) return;
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        cartCount.textContent = totalItems;
+    }
 
-        // Добавление в корзину
-        function addToCart(productId, quantity = 1) {
-            const product = allProducts.find(p => p.id === productId);
-            if (!product) return;
-            
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += quantity;
-            } else {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    quantity: quantity
-                });
-            }
-            
-            updateCartCount();
-            showNotification('Товар добавлен в корзину');
-        }
-
-        // Обновление счетчика корзины
-        function updateCartCount() {
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
-        }
-
-        // Открытие корзины
-        function openCartModal() {
-            renderCartItems();
-            cartModal.classList.add('active');
+    // Открытие корзины
+    function openCartModal() {
+        renderCartItems();
+        if (cartModal) {
+            cartModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
+    }
 
-        // Закрытие корзины
-        function closeCart() {
-            cartModal.classList.remove('active');
+    // Закрытие корзины
+    function closeCart() {
+        if (cartModal) {
+            cartModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+    }
 
-        // Отрисовка товаров в корзине
-        function renderCartItems() {
-            cartItems.innerHTML = '';
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = `
-                    <div class="empty-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <p>Ваша корзина пуста</p>
-                    </div>
-                `;
-                cartTotal.textContent = 'Итого: 0 грн';
-                return;
-            }
-            
-            let total = 0;
-            
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                
-                const cartItemElement = document.createElement('div');
-                cartItemElement.className = 'cart-item';
-                cartItemElement.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${formatPrice(item.price)}</div>
-                        <div class="cart-item-quantity">
-                            <button class="quantity-btn decrease" data-id="${item.id}">-</button>
-                            <span class="quantity-value">${item.quantity}</span>
-                            <button class="quantity-btn increase" data-id="${item.id}">+</button>
-                            <button class="remove-item" data-id="${item.id}">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                cartItems.appendChild(cartItemElement);
-                
-                // Обработчики событий для элементов корзины
-                const decreaseBtn = cartItemElement.querySelector('.decrease');
-                const increaseBtn = cartItemElement.querySelector('.increase');
-                const removeBtn = cartItemElement.querySelector('.remove-item');
-                
-                decreaseBtn.addEventListener('click', () => updateCartItemQuantity(item.id, -1));
-                increaseBtn.addEventListener('click', () => updateCartItemQuantity(item.id, 1));
-                removeBtn.addEventListener('click', () => removeFromCart(item.id));
-            });
-            
-            cartTotal.textContent = `Итого: ${formatPrice(total)}`;
-        }
-
-        // Обновление количества товара в корзине
-        function updateCartItemQuantity(productId, change) {
-            const item = cart.find(item => item.id === productId);
-            if (!item) return;
-            
-            item.quantity += change;
-            
-            if (item.quantity <= 0) {
-                removeFromCart(productId);
-            } else {
-                updateCartCount();
-                renderCartItems();
-            }
-        }
-
-        // Удаление из корзины
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCartCount();
-            renderCartItems();
-        }
-
-        // Очистка корзины
-        function clearCart() {
-            cart = [];
-            updateCartCount();
-            renderCartItems();
-            showNotification('Корзина очищена');
-        }
-
-        // Оформление заказа
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Корзина пуста');
-                return;
-            }
-            
-            // Получаем данные из формы
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const novaPoshta = document.getElementById('novaPoshta').value;
-            const comments = document.getElementById('comments').value;
-            
-            // Проверяем обязательные поля
-            if (!firstName || !lastName || !phone || !novaPoshta) {
-                alert('Пожалуйста, заполните все обязательные поля');
-                return;
-            }
-            
-            // Формируем сообщение для Telegram
-            let message = `📦 *НОВЫЙ ЗАКАЗ ТОЧМЕД* 📦\n\n`;
-            message += `👤 *Клиент:* ${firstName} ${lastName}\n`;
-            message += `📞 *Телефон:* ${phone}\n`;
-            if (email) message += `📧 *Email:* ${email}\n`;
-            message += `🚚 *Отделение Новой Почты:* ${novaPoshta}\n`;
-            if (comments) message += `💬 *Комментарий:* ${comments}\n\n`;
-            
-            message += `🛒 *Товары в заказе:*\n`;
-            let total = 0;
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                message += `• ${item.name} - ${item.quantity} шт. - ${formatPrice(itemTotal)}\n`;
-            });
-            
-            message += `\n💰 *Общая сумма:* ${formatPrice(total)}`;
-            
-            // Отправляем заказ в Telegram
-            sendToTelegram(message);
-            
-            alert('Заказ успешно оформлен! Мы свяжемся с вами в ближайшее время.');
-            clearCart();
-            closeCart();
-        }
-
-        // Отправка сообщения в Telegram
-        function sendToTelegram(message) {
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-            
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message,
-                    parse_mode: 'Markdown'
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Сообщение отправлено в Telegram:', data);
-            })
-            .catch(error => {
-                console.error('Ошибка отправки в Telegram:', error);
-            });
-        }
-
-        // Переключение языка
-        function toggleLanguage() {
-            currentLanguage = currentLanguage === 'ru' ? 'ua' : 'ru';
-            
-            // Переключение текстов на странице с сохранением классов
-            document.querySelectorAll('[data-lang]').forEach(element => {
-                if (element.dataset.lang === currentLanguage) {
-                    element.classList.remove('hidden-lang');
-                } else {
-                    element.classList.add('hidden-lang');
-                }
-            });
-            
-            // Обновление текста кнопки языка
-            const langText = currentLanguage === 'ru' ? 'RU' : 'UA';
-            currentLangSpan.textContent = langText;
-
-            // ОБНОВЛЯЕМ КАТАЛОГ С УЧЕТОМ ЯЗЫКА
-            renderProducts();
-        }
-
-        // Переключение мобильного меню
-        function toggleMenu() {
-            mainNav.classList.toggle('active');
-            
-            // Меняем иконку бургера на крестик и обратно
-            const icon = menuToggle.querySelector('i');
-            if (mainNav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        }
-
-        // Открытие модального окна связи
-        function openContactModal() {
-            contactModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Закрытие модального окна связи
-        function closeContactModal() {
-            contactModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Обработка формы в модальном окне
-        function handleModalFormSubmit(e) {
-            e.preventDefault();
-            
-            // Получаем данные из формы
-            const name = e.target.querySelector('input[type="text"]').value;
-            const phone = e.target.querySelector('input[type="tel"]').value;
-            const email = e.target.querySelector('input[type="email"]').value;
-            const message = e.target.querySelector('textarea').value;
-            
-            // Формируем сообщение для Telegram
-            let telegramMessage = `📞 *ЗАПРОС ЗВОНКА ТОЧМЕД* 📞\n\n`;
-            telegramMessage += `👤 *Имя:* ${name}\n`;
-            telegramMessage += `📞 *Телефон:* ${phone}\n`;
-            telegramMessage += `📧 *Email:* ${email}\n`;
-            telegramMessage += `💬 *Сообщение:* ${message}`;
-            
-            // Отправляем запрос в Telegram
-            sendToTelegram(telegramMessage);
-            
-            alert('Ваша заявка отправлена! Мы свяжемся с вами в ближайшее время.');
-            closeContactModal();
-            e.target.reset();
-        }
-
-        // Обработка формы контактов
-        function handleContactFormSubmit(e) {
-            e.preventDefault();
-            
-            // Получаем данные из формы
-            const name = e.target.querySelector('input[type="text"]').value;
-            const email = e.target.querySelector('input[type="email"]').value;
-            const message = e.target.querySelector('textarea').value;
-            
-            // Формируем сообщение для Telegram
-            let telegramMessage = `📧 *СООБЩЕНИЕ С САЙТА ТОЧМЕД* 📧\n\n`;
-            telegramMessage += `👤 *Имя:* ${name}\n`;
-            telegramMessage += `📧 *Email:* ${email}\n`;
-            telegramMessage += `💬 *Сообщение:* ${message}`;
-            
-            // Отправляем сообщение в Telegram
-            sendToTelegram(telegramMessage);
-            
-            alert('Сообщение отправлено! Мы ответим вам в ближайшее время.');
-            e.target.reset();
-        }
-
-        // Показать уведомление
-        function showNotification(message) {
-            // Создаем элемент уведомления
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: var(--success);
-                color: white;
-                padding: 15px 20px;
-                border-radius: 8px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                z-index: 3000;
-                animation: fadeIn 0.3s;
+    // Отрисовка товаров в корзине
+    function renderCartItems() {
+        if (!cartItems || !cartTotal) return;
+        
+        cartItems.innerHTML = '';
+        
+        if (cart.length === 0) {
+            cartItems.innerHTML = `
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>${currentLanguage === 'ru' ? 'Ваша корзина пуста' : 'Ваш кошик порожній'}</p>
+                </div>
             `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            // Удаляем уведомление через 3 секунды
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
+            cartTotal.textContent = currentLanguage === 'ru' ? 'Итого: 0 грн' : 'Разом: 0 грн';
+            return;
         }
+        
+        let total = 0;
+        
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            
+            const cartItemElement = document.createElement('div');
+            cartItemElement.className = 'cart-item';
+            cartItemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-details">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">${formatPrice(item.price)}</div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+                        <span class="quantity-value">${item.quantity}</span>
+                        <button class="quantity-btn increase" data-id="${item.id}">+</button>
+                        <button class="remove-item" data-id="${item.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            cartItems.appendChild(cartItemElement);
+            
+            // Добавляем обработчики событий для элементов корзины
+            const decreaseBtn = cartItemElement.querySelector('.decrease');
+            const increaseBtn = cartItemElement.querySelector('.increase');
+            const removeBtn = cartItemElement.querySelector('.remove-item');
+            
+            decreaseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateCartItemQuantity(item.id, -1);
+            });
+            
+            increaseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateCartItemQuantity(item.id, 1);
+            });
+            
+            removeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                removeFromCart(item.id);
+            });
+        });
+        
+        cartTotal.textContent = `${currentLanguage === 'ru' ? 'Итого:' : 'Разом:'} ${formatPrice(total)}`;
+    }
+
+    // Обновление количества товара в корзине
+    function updateCartItemQuantity(productId, change) {
+        const item = cart.find(item => item.id === productId);
+        if (!item) return;
+        
+        item.quantity += change;
+        
+        if (item.quantity <= 0) {
+            removeFromCart(productId);
+        } else {
+            // Сохраняем в localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+        }
+    }
+
+    // Удаление из корзины
+    function removeFromCart(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        // Сохраняем в localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        renderCartItems();
+        showNotification(currentLanguage === 'ru' ? 'Товар удален из корзины' : 'Товар видалено з кошика');
+    }
+
+    // Очистка корзины
+    function clearCart() {
+        cart = [];
+        localStorage.removeItem('cart');
+        updateCartCount();
+        renderCartItems();
+        showNotification(currentLanguage === 'ru' ? 'Корзина очищена' : 'Кошик очищено');
+    }
+
+    // Оформление заказа
+    function checkout() {
+        if (cart.length === 0) {
+            alert(currentLanguage === 'ru' ? 'Корзина пуста' : 'Кошик порожній');
+            return;
+        }
+        
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const phone = document.getElementById('phone');
+        const email = document.getElementById('email');
+        const novaPoshta = document.getElementById('novaPoshta');
+        const comments = document.getElementById('comments');
+        
+        if (!firstName || !lastName || !phone || !novaPoshta) {
+            alert(currentLanguage === 'ru' ? 'Пожалуйста, заполните все обязательные поля' : 'Будь ласка, заповніть всі обов\'язкові поля');
+            return;
+        }
+        
+        if (!firstName.value || !lastName.value || !phone.value || !novaPoshta.value) {
+            alert(currentLanguage === 'ru' ? 'Пожалуйста, заполните все обязательные поля' : 'Будь ласка, заповніть всі обов\'язкові поля');
+            return;
+        }
+        
+        let message = `📦 *НОВЫЙ ЗАКАЗ ТОЧМЕД* 📦\n\n`;
+        message += `👤 *Клиент:* ${firstName.value} ${lastName.value}\n`;
+        message += `📞 *Телефон:* ${phone.value}\n`;
+        if (email.value) message += `📧 *Email:* ${email.value}\n`;
+        message += `🚚 *Отделение Новой Почты:* ${novaPoshta.value}\n`;
+        if (comments.value) message += `💬 *Комментарий:* ${comments.value}\n\n`;
+        
+        message += `🛒 *Товары в заказе:*\n`;
+        let total = 0;
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            message += `• ${item.name} - ${item.quantity} шт. - ${formatPrice(itemTotal)}\n`;
+        });
+        
+        message += `\n💰 *Общая сумма:* ${formatPrice(total)}`;
+        
+        sendToTelegram(message);
+        
+        alert(currentLanguage === 'ru' ? 'Заказ успешно оформлен! Мы свяжемся с вами в ближайшее время.' : 'Замовлення успішно оформлено! Ми зв\'яжемося з вами найближчим часом.');
+        clearCart();
+        closeCart();
+        
+        // Очистка формы
+        firstName.value = '';
+        lastName.value = '';
+        phone.value = '';
+        if (email) email.value = '';
+        novaPoshta.value = '';
+        if (comments) comments.value = '';
+    }
+
+    // Отправка сообщения в Telegram
+    function sendToTelegram(message) {
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message,
+                parse_mode: 'Markdown'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Сообщение отправлено в Telegram:', data);
+        })
+        .catch(error => {
+            console.error('Ошибка отправки в Telegram:', error);
+        });
+    }
+
+    // Переключение языка
+    function toggleLanguage() {
+        currentLanguage = currentLanguage === 'ru' ? 'ua' : 'ru';
+        
+        // Обновляем тексты на странице
+        document.querySelectorAll('[data-lang]').forEach(element => {
+            if (element.dataset.lang === currentLanguage) {
+                element.classList.remove('hidden-lang');
+            } else {
+                element.classList.add('hidden-lang');
+            }
+        });
+        
+        const langText = currentLanguage === 'ru' ? 'RU' : 'UA';
+        if (currentLangSpan) currentLangSpan.textContent = langText;
+
+        initCategories();
+        renderProducts();
+        renderCartItems();
+    }
+
+    // Переключение мобильного меню
+    function toggleMenu() {
+        if (!mainNav || !menuToggle) return;
+        
+        mainNav.classList.toggle('active');
+        
+        const icon = menuToggle.querySelector('i');
+        if (mainNav.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    }
+
+    // Открытие модального окна связи
+    function openContactModal() {
+        if (contactModal) {
+            contactModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    // Закрытие модального окна связи
+    function closeContactModal() {
+        if (contactModal) {
+            contactModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Обработка формы в модальном окне
+    function handleModalFormSubmit(e) {
+        e.preventDefault();
+        
+        const name = e.target.querySelector('input[type="text"]');
+        const phone = e.target.querySelector('input[type="tel"]');
+        const email = e.target.querySelector('input[type="email"]');
+        const message = e.target.querySelector('textarea');
+        
+        if (!name || !phone) return;
+        
+        let telegramMessage = `📞 *ЗАПРОС ЗВОНКА ТОЧМЕД* 📞\n\n`;
+        telegramMessage += `👤 *Имя:* ${name.value}\n`;
+        telegramMessage += `📞 *Телефон:* ${phone.value}\n`;
+        if (email && email.value) telegramMessage += `📧 *Email:* ${email.value}\n`;
+        if (message && message.value) telegramMessage += `💬 *Сообщение:* ${message.value}`;
+        
+        sendToTelegram(telegramMessage);
+        
+        alert(currentLanguage === 'ru' ? 'Ваша заявка отправлена! Мы свяжемся с вами в ближайшее время.' : 'Ваша заявка відправлена! Ми зв\'яжемося з вами найближчим часом.');
+        closeContactModal();
+        e.target.reset();
+    }
+
+    // Обработка формы контактов
+    function handleContactFormSubmit(e) {
+        e.preventDefault();
+        
+        const name = e.target.querySelector('input[type="text"]');
+        const email = e.target.querySelector('input[type="email"]');
+        const message = e.target.querySelector('textarea');
+        
+        if (!name || !email || !message) return;
+        
+        let telegramMessage = `📧 *СООБЩЕНИЕ С САЙТА ТОЧМЕД* 📧\n\n`;
+        telegramMessage += `👤 *Имя:* ${name.value}\n`;
+        telegramMessage += `📧 *Email:* ${email.value}\n`;
+        telegramMessage += `💬 *Сообщение:* ${message.value}`;
+        
+        sendToTelegram(telegramMessage);
+        
+        alert(currentLanguage === 'ru' ? 'Сообщение отправлено! Мы ответим вам в ближайшее время.' : 'Повідомлення відправлено! Ми відповімо вам найближчим часом.');
+        e.target.reset();
+    }
+
+    // Показать уведомление
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 10000;
+            animation: fadeIn 0.3s;
+            font-size: 14px;
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'fadeOut 0.3s';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
     </script>
-</body>
+    </body>
 </html>
