@@ -2942,7 +2942,9 @@
             cartItemElement.innerHTML = `
                 <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                 <div class="cart-item-details">
-                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-name">
+                        ${currentLanguage === 'ua' && item.nameUa ? item.nameUa : item.name}
+                    </div>
                     <div class="cart-item-price">${formatPrice(item.price)}</div>
                     <div class="cart-item-quantity">
                         <button class="quantity-btn decrease" data-id="${item.id}">-</button>
