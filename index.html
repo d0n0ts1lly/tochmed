@@ -332,7 +332,34 @@
             color: white;
             border-color: var(--primary);
         }
-        
+
+        .product-name {
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* максимум 3 строки */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2em; /* высота строки */
+            max-height: 3.6em; /* 3 строки * line-height */
+            margin: 0;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5em;
+        }
+
+        .category-badge {
+            background-color: #f39c12;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 0.2em 0.5em;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
         /* Каталог */
         .catalog-grid {
             display: grid;
@@ -1584,7 +1611,7 @@
                             </span>
                             <span class="contact-value">
                                 <span data-lang="ru" class="hidden-lang">Шевченко Анна Олексеевна</span>
-                                <span data-lang="ua">Шевченко Ганна Олексіївна</span>
+                                <span data-lang="ua">Шевченко Анна Олексіївна</span>
                             </span>
                         </p>
                         <p>
@@ -2678,6 +2705,9 @@
         if (selectedCategory !== 'all') {
             filteredProducts = filteredProducts.filter(product => product.category === selectedCategory);
         }
+        else {
+            filteredProducts = filteredProducts.sort(() => Math.random() - 0.5);
+        }
         
         if (searchQuery) {
             const query = searchQuery.toLowerCase();
@@ -2707,9 +2737,15 @@
             productElement.innerHTML = `
                 <img src="${product.image}" alt="${productName}">
                 <div class="item-info">
-                    <h3>${productName}</h3>
+                    <div class="product-header">
+                        <h3 class="product-name">${productName}</h3>
+                    </div>
                     <div class="product-purpose">
-                        <p>${productPurpose ? productPurpose.substring(0, 80) + '...' : ''}</p>
+                        <p>
+                        ${productPurpose 
+                            ? (productPurpose.length > 80 ? productPurpose.substring(0, 80) + '...' : productPurpose) 
+                            : ''}
+                        </p>
                     </div>
                     <div class="price">
                         <span>${formatPrice(product.price)}</span>
@@ -2758,6 +2794,9 @@
 
     // Форматирование цены
     function formatPrice(price) {
+        if (price === null) {
+            return currentLanguage === 'ru' ? 'Цену уточнять' : 'Ціну уточнювати';
+        }
         return new Intl.NumberFormat('uk-UA', {
             style: 'currency',
             currency: 'UAH',
