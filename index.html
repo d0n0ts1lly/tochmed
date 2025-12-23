@@ -392,6 +392,22 @@
             object-fit: cover;
             transition: transform 0.5s;
         }
+
+        .catalog-item .image-wrapper {
+            width: 100%;
+            height: 220px;            /* одинаковая высота */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .catalog-item .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;      /* не обрезает */
+        }
         
         .catalog-item:hover img {
             transform: scale(1.05);
@@ -2704,7 +2720,7 @@
         
         let filteredProducts = allProducts;
         
-        const priorityOrder = [4, 1, 9, 7, 8, 22, 12, 2]; // ТВОЙ порядок
+        const priorityOrder = [4, 1, 6, 7, 8, 22, 12, 2]; // ТВОЙ порядок
 
         if (selectedCategory !== 'all') {
             filteredProducts = filteredProducts.filter(product => product.category === selectedCategory);
@@ -2757,7 +2773,9 @@
             const productApplication = currentLanguage === 'ua' && product.applicationUa ? product.applicationUa : product.application;
 
             productElement.innerHTML = `
-                <img src="${product.image}" alt="${productName}">
+                <div class="image-wrapper">
+                    <img src="${product.image}" alt="${productName}">
+                </div>
                 <div class="item-info">
                     <div class="product-header">
                         <h3 class="product-name">${productName}</h3>
@@ -2863,9 +2881,9 @@
         }
         
         if (currentLanguage === 'ua') {
-            modalProductStatus.textContent = currentProduct.inStock ? 'В наявності' : 'Немає в наявності';
+            modalProductStatus.textContent = currentProduct.inStock ? 'Наявність уточнюйте' : 'Немає в наявності';
         } else {
-            modalProductStatus.textContent = currentProduct.inStock ? 'В наличии' : 'Нет в наличии';
+            modalProductStatus.textContent = currentProduct.inStock ? 'Наличие уточняйте' : 'Нет в наличии';
         }
         modalProductStatus.className = `product-status ${currentProduct.inStock ? 'status-available' : 'status-unavailable'}`;
         
