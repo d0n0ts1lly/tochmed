@@ -2535,7 +2535,7 @@
     let currentQuantity = 1;
     let selectedCategory = 'all';
     let searchQuery = '';
-    let productsToShow = 6;
+    let productsToShow = 8;
     let allProducts = [...products];
 
     // Объявляем переменные для DOM элементов
@@ -2688,7 +2688,7 @@
                     btn.classList.remove('active');
                 });
                 button.classList.add('active');
-                productsToShow = 6;
+                productsToShow = 8;
                 renderProducts();
             });
             
@@ -2704,11 +2704,31 @@
         
         let filteredProducts = allProducts;
         
+        const priorityOrder = [4, 1, 9, 7, 8, 22, 12, 2]; // ТВОЙ порядок
+
         if (selectedCategory !== 'all') {
             filteredProducts = filteredProducts.filter(product => product.category === selectedCategory);
-        }
-        else {
-            filteredProducts = filteredProducts.sort(() => Math.random() - 0.5);
+        } else {
+
+            // формируем списки
+            const priorityProducts = [];
+            const otherProducts = [];
+
+            filteredProducts.forEach(p => {
+                if (priorityOrder.includes(p.id)) {
+                    priorityProducts.push(p);
+                } else {
+                    otherProducts.push(p);
+                }
+            });
+
+            // сортируем первые 8 по порядку id из priorityOrder
+            priorityProducts.sort((a, b) => {
+                return priorityOrder.indexOf(a.id) - priorityOrder.indexOf(b.id);
+            });
+
+            // результат: первые 8 — приоритетные, остальные — как есть
+            filteredProducts = [...priorityProducts, ...otherProducts];
         }
         
         if (searchQuery) {
@@ -2782,7 +2802,7 @@
 
     // Загрузка дополнительных товаров
     function loadMoreProducts() {
-        productsToShow += 6;
+        productsToShow += 8;
         renderProducts();
     }
 
@@ -2809,7 +2829,7 @@
     // Поиск товаров
     function handleSearch(e) {
         searchQuery = e.target.value;
-        productsToShow = 6;
+        productsToShow = 8;
         renderProducts();
     }
 
