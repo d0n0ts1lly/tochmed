@@ -1895,9 +1895,10 @@
         { id: "Стоматология", name: "Стоматология", nameUa: "Стоматологія" }
     ];
 
-    // Настройки Telegram бота
-    const chatId = "99421962";
-    const botToken = "8357407082:AAHs_nYFp7kzGlebt6bYuYBnpuTqlqN3zRc";
+    // Адрес Cloudflare Worker'а, который принимает заявки и пересылает их в Telegram.
+    // Это тот же воркер, что использует webpulse — токен бота и chat_id
+    // хранятся только в его секретах, сюда не попадают.
+    const FORM_ENDPOINT = "https://webpulse-contact-form.d0n0ts1lly.workers.dev";
 
     // Переменные для состояния
     let currentLanguage = 'ua';
@@ -2478,7 +2479,7 @@
     }
 
     // Оформление заказа
-    function checkout() {
+    async function checkout() {
         if (cart.length === 0) {
             alert(currentLanguage === 'ru' ? 'Корзина пуста' : 'Кошик порожній');
             return;
@@ -2501,26 +2502,37 @@
             return;
         }
         
-        let message = `📦 *НОВЫЙ ЗАКАЗ ТОЧМЕД* 📦\n\n`;
-        message += `👤 *Клиент:* ${firstName.value} ${lastName.value}\n`;
-        message += `📞 *Телефон:* ${phone.value}\n`;
-        if (email.value) message += `📧 *Email:* ${email.value}\n`;
-        message += `🚚 *Отделение Новой Почты:* ${novaPoshta.value}\n`;
-        if (comments.value) message += `💬 *Комментарий:* ${comments.value}\n\n`;
-        
-        message += `🛒 *Товары в заказе:*\n`;
         let total = 0;
-        cart.forEach(item => {
+        const items = cart.map(item => {
             const itemTotal = item.price * item.quantity;
             total += itemTotal;
-            message += `• ${item.name} - ${item.quantity} шт. - ${formatPrice(itemTotal)}\n`;
+            return {
+                name: item.name,
+                quantity: item.quantity,
+                itemTotal: formatPrice(itemTotal)
+            };
         });
-        
-        message += `\n💰 *Общая сумма:* ${formatPrice(total)}`;
-        
-        sendToTelegram(message);
-        
-        alert(currentLanguage === 'ru' ? 'Заказ успешно оформлен! Мы свяжемся с вами в ближайшее время.' : 'Замовлення успішно оформлено! Ми зв\'яжемося з вами найближчим часом.');
+
+        const payload = {
+            type: 'order',
+            firstName: firstName.value,
+            lastName: lastName.value,
+            phone: phone.value,
+            email: email ? email.value : '',
+            novaPoshta: novaPoshta.value,
+            comments: comments ? comments.value : '',
+            items: items,
+            total: formatPrice(total)
+        };
+
+        const sent = await sendToTelegram(payload);
+
+        if (sent) {
+            alert(currentLanguage === 'ru' ? 'Заказ успешно оформлен! Мы свяжемся с вами в ближайшее время.' : 'Замовлення успішно оформлено! Ми зв\'яжемося з вами найближчим часом.');
+        } else {
+            alert(currentLanguage === 'ru' ? 'Не удалось отправить заказ. Попробуйте еще раз или свяжитесь с нами по телефону.' : 'Не вдалося надіслати замовлення. Спробуйте ще раз або зв\'яжіться з нами за телефоном.');
+        }
+
         clearCart();
         closeCart();
         
@@ -2533,28 +2545,30 @@
         if (comments) comments.value = '';
     }
 
-    // Отправка сообщения в Telegram
-    function sendToTelegram(message) {
-        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-        
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: message,
-                parse_mode: 'Markdown'
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Сообщение отправлено в Telegram:', data);
-        })
-        .catch(error => {
-            console.error('Ошибка отправки в Telegram:', error);
-        });
+    // Отправка заявки на Cloudflare Worker, который пересылает её в Telegram.
+    // Сам токен бота нигде в клиентском коде не хранится.
+    async function sendToTelegram(payload) {
+        try {
+            const response = await fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok || data.ok === false) {
+                console.error('Ошибка отправки заявки:', data);
+                return false;
+            }
+
+            return true;
+        } catch (error) {
+            console.error('Ошибка отправки заявки:', error);
+            return false;
+        }
     }
 
     // Переключение языка
@@ -2611,7 +2625,7 @@
     }
 
     // Обработка формы в модальном окне
-    function handleModalFormSubmit(e) {
+    async function handleModalFormSubmit(e) {
         e.preventDefault();
         
         const name = e.target.querySelector('input[type="text"]');
@@ -2621,21 +2635,27 @@
         
         if (!name || !phone) return;
         
-        let telegramMessage = `📞 *ЗАПРОС ЗВОНКА ТОЧМЕД* 📞\n\n`;
-        telegramMessage += `👤 *Имя:* ${name.value}\n`;
-        telegramMessage += `📞 *Телефон:* ${phone.value}\n`;
-        if (email && email.value) telegramMessage += `📧 *Email:* ${email.value}\n`;
-        if (message && message.value) telegramMessage += `💬 *Сообщение:* ${message.value}`;
-        
-        sendToTelegram(telegramMessage);
-        
-        alert(currentLanguage === 'ru' ? 'Ваша заявка отправлена! Мы свяжемся с вами в ближайшее время.' : 'Ваша заявка відправлена! Ми зв\'яжемося з вами найближчим часом.');
-        closeContactModal();
-        e.target.reset();
+        const payload = {
+            type: 'call',
+            name: name.value,
+            phone: phone.value,
+            email: email ? email.value : '',
+            message: message ? message.value : ''
+        };
+
+        const sent = await sendToTelegram(payload);
+
+        if (sent) {
+            alert(currentLanguage === 'ru' ? 'Ваша заявка отправлена! Мы свяжемся с вами в ближайшее время.' : 'Ваша заявка відправлена! Ми зв\'яжемося з вами найближчим часом.');
+            closeContactModal();
+            e.target.reset();
+        } else {
+            alert(currentLanguage === 'ru' ? 'Не удалось отправить заявку. Попробуйте еще раз.' : 'Не вдалося надіслати заявку. Спробуйте ще раз.');
+        }
     }
 
     // Обработка формы контактов
-    function handleContactFormSubmit(e) {
+    async function handleContactFormSubmit(e) {
         e.preventDefault();
         
         const name = e.target.querySelector('input[type="text"]');
@@ -2644,15 +2664,21 @@
         
         if (!name || !email || !message) return;
         
-        let telegramMessage = `📧 *СООБЩЕНИЕ С САЙТА ТОЧМЕД* 📧\n\n`;
-        telegramMessage += `👤 *Имя:* ${name.value}\n`;
-        telegramMessage += `📧 *Email:* ${email.value}\n`;
-        telegramMessage += `💬 *Сообщение:* ${message.value}`;
-        
-        sendToTelegram(telegramMessage);
-        
-        alert(currentLanguage === 'ru' ? 'Сообщение отправлено! Мы ответим вам в ближайшее время.' : 'Повідомлення відправлено! Ми відповімо вам найближчим часом.');
-        e.target.reset();
+        const payload = {
+            type: 'contact',
+            name: name.value,
+            email: email.value,
+            message: message.value
+        };
+
+        const sent = await sendToTelegram(payload);
+
+        if (sent) {
+            alert(currentLanguage === 'ru' ? 'Сообщение отправлено! Мы ответим вам в ближайшее время.' : 'Повідомлення відправлено! Ми відповімо вам найближчим часом.');
+            e.target.reset();
+        } else {
+            alert(currentLanguage === 'ru' ? 'Не удалось отправить сообщение. Попробуйте еще раз.' : 'Не вдалося надіслати повідомлення. Спробуйте ще раз.');
+        }
     }
 
     // Показать уведомление
